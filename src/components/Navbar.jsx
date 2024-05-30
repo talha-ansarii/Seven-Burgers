@@ -25,11 +25,11 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-bg-yellow">
+    <div className="bg-bg-yellow md:absolute md:z-50 lg:absolute lg:z-50">
       <div className="relative">
         <div
           onClick={handleMenu}
-          className="absolute z-10 m-4 top-0 right-0 md:hidden lg:hidden p-2 bg-font-blue w-10 h-10 flex justify-center items-center rounded-full text-white cursor-pointer shadow-md"
+          className="absolute z-50 m-4 top-0 right-0 md:hidden lg:hidden p-2 bg-font-blue w-10 h-10 flex justify-center items-center rounded-full text-white cursor-pointer shadow-md"
         >
           {isOpen ? <RxCross2 /> : <RxHamburgerMenu />}
         </div>
