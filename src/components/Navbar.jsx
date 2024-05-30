@@ -29,13 +29,13 @@ const Navbar = () => {
       <div className="relative">
         <div
           onClick={handleMenu}
-          className="absolute z-50 m-4 top-0 right-0 md:hidden lg:hidden p-2 bg-font-blue w-10 h-10 flex justify-center items-center rounded-full text-white cursor-pointer shadow-md"
+          className="absolute z-[200] m-4 top-0 right-0 md:hidden lg:hidden p-2 bg-font-blue w-10 h-10 flex justify-center items-center rounded-full text-white cursor-pointer shadow-md"
         >
           {isOpen ? <RxCross2 /> : <RxHamburgerMenu />}
         </div>
         <div>
           <div
-            className={`fixed inset-0 z-0 transition-transform transform duration-500 bg-bg-yellow justify-center items-center text-font-blue font-migra text-[50px] flex flex-col gap-[32px] ${
+            className={`fixed inset-0 z-[100] transition-transform transform duration-500 bg-bg-yellow justify-center items-center text-font-blue font-migra text-[50px] flex flex-col gap-[32px] ${
               isOpen ? "translate-x-0" : "translate-x-full"
             }`}
           >
