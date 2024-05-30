@@ -1,9 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { RxHamburgerMenu, RxCross2 } from "react-icons/rx";
+import { animateScroll as scroll } from "react-scroll";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolling, setScrolling] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleScroll = () => {
+    if (window.scrollY > 20) {
+      setScrolling(true);
+    } else {
+      setScrolling(false);
+    }
+  };
 
   const handleMenu = () => {
     setIsOpen(!isOpen);
@@ -32,7 +47,14 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <div className="hidden w-full h-[106.89px] md:flex lg:flex justify-between items-center py-[12px] px-[100px] font-migra text-font-blue text-[16px] leading-[19.36px] font-[800] bg-bg-yellow shadow-navBar">
+
+      <div
+        className={`hidden fixed h-[106.89px] md:flex lg:flex justify-between items-center py-[12px] px-[100px] font-migra text-font-blue text-[16px] leading-[19.36px] font-[800] bg-bg-yellow transition-all ease-linear duration-300  ${
+          scrolling
+            ? " rounded-full m-4 w-[96%] left-[2%] right-[2%] mx-auto shadow-md"
+            : "rounded-none shadow-navBar w-full"
+        }`}
+      >
         <div>
           <img
             src="/logo.svg"
@@ -52,7 +74,11 @@ const Navbar = () => {
         <div className="flex gap-[42px]">
           <button>Sign in</button>
           <button>
-            <img src="/ShoppingCart.svg" alt="cart" className="w-[21px] h-[21px]" />
+            <img
+              src="/ShoppingCart.svg"
+              alt="cart"
+              className="w-[21px] h-[21px]"
+            />
           </button>
         </div>
       </div>
