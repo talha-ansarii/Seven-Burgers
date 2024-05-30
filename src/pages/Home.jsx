@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar'
 
 const Home = () => {
   return (  
-    <div >
+    <div className='h-[1000px]' >
     <Navbar/>
     
       </div>
