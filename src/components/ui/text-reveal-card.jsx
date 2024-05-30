@@ -104,7 +104,7 @@ function mouseEnterHandler() {
         ></motion.div>
 
         <div className=" overflow-hidden w-[200%] ">
-          <p className=" text-[70px] leading-[70px] md:text-[105px] md:leading-[105px] lg:text-[105px] lg:leading-[105px] py-10 font-migra font-bold text-[#152663] ">
+          <p className=" text-[60px] leading-[60px] md:text-[70px] md:leading-[70px] lg:text-[105px] lg:leading-[105px] py-10 font-migra font-bold text-[#152663] ">
             {text}
           </p>
           <MemoizedStars />
@@ -144,7 +144,7 @@ const Stars = () => {
         <motion.span
           key={`star-${i}`}
           animate={{
-            top: `calc(${random() * 100}% + ${randomMove()}px)`,
+            top: `calc(${random() * 130}% + ${randomMove()}px)`,
             left: `calc(${random() * 100}% + ${randomMove()}px)`,
             opacity: randomOpacity(),
             scale: [1, 1.2, 0],

@@ -25,7 +25,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-bg-yellow md:absolute md:z-50 lg:absolute lg:z-50">
+    <div className="bg-bg-yellow md:absolute md:z-50 lg:absolute lg:z-50 ">
       <div className="relative">
         <div
           onClick={handleMenu}
@@ -49,17 +49,18 @@ const Navbar = () => {
       </div>
 
       <div
-        className={`hidden fixed h-[106.89px] md:flex lg:flex justify-between items-center py-[12px] px-[100px] font-migra text-font-blue text-[16px] leading-[19.36px] font-[800] bg-bg-yellow transition-all ease-linear duration-300  ${
+        className={`hidden fixed  md:flex lg:flex justify-between items-center py-[12px] px-[100px] font-migra text-font-blue text-[16px] leading-[19.36px] font-[800] bg-bg-yellow transition-all ease-in-out duration-300  ${
           scrolling
-            ? " rounded-full m-4 w-[96%] left-[2%] right-[2%] mx-auto shadow-md"
-            : "rounded-none shadow-navBar w-full"
+            ? " rounded-full h-[60px] m-4 w-[96%] left-[2%] right-[2%] mx-auto shadow-md"
+            : "rounded-none shadow-navBar w-[100%] left-0 right-0 h-[106.89px]"
         }`}
       >
-        <div>
+        <div className="m-2 ">
           <img
-            src="/logo.svg"
+            src="/logo.png"
             alt="logo"
-            className="w-[120px] h-[82.89px] border-black border-[1px] rounded-[32px]"
+            className={`p-2 transition-all ease-in-out duration-300  rounded-[32px] *
+            ${scrolling ? " w-[70px] h-[50.89px] border-black border-[1px] " : " w-[120px] h-[82.89px] border-black border-[1px] "}`}
           />
         </div>
 
@@ -71,16 +72,7 @@ const Navbar = () => {
           <Link to="/">Contact us</Link>
         </div>
 
-        <div className="flex gap-[42px]">
-          <button>Sign in</button>
-          <button>
-            <img
-              src="/ShoppingCart.svg"
-              alt="cart"
-              className="w-[21px] h-[21px]"
-            />
-          </button>
-        </div>
+        
       </div>
     </div>
   );

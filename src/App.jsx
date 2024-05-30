@@ -4,7 +4,7 @@ import './App.css'
 function App() {
 
   return (
-    <div className='w-full'>
+    <div className=''>
       <Routes>
         <Route path="/" element={<Home/>} />   
 

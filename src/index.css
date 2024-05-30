@@ -8,18 +8,18 @@
 
 
 
-.shadow-navBar {
-    box-shadow: 0px 1px 9.9px 0px rgba(0, 0, 0, 0.29);
-}
-
-.shadow-order-button{
-  box-shadow: 2px 3px 0px 0px #000000;
-}
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-
-/* *{
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+  
+  .shadow-navBar {
+      box-shadow: 0px 1px 9.9px 0px rgba(0, 0, 0, 0.29);
+  }
+  
+  .shadow-order-button{
+    box-shadow: 2px 3px 0px 0px #000000;
+  }
+/* 
+*{
   border: 1px solid red;
 } */
