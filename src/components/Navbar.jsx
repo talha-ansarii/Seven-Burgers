@@ -2,11 +2,17 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { RxHamburgerMenu, RxCross2 } from "react-icons/rx";
 import { animateScroll as scroll } from "react-scroll";
+import { motion } from 'framer-motion';
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolling, setScrolling] = useState(false);
-
+  const variants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -20 },
+  };
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -48,32 +54,68 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div
-        className={`hidden fixed  md:flex lg:flex justify-between items-center py-[12px] px-[100px] font-migra text-font-blue text-[16px] leading-[19.36px] font-[800] bg-bg-yellow transition-all ease-in-out duration-300  ${
-          scrolling
-            ? " rounded-full h-[60px] m-4 w-[96%] left-[2%] right-[2%] mx-auto shadow-md"
-            : "rounded-none shadow-navBar w-[100%] left-0 right-0 h-[106.89px]"
-        }`}
-      >
-        <div className="m-2 ">
-          <img
-            src="/logo.png"
-            alt="logo"
-            className={`p-2 transition-all ease-in-out duration-300  rounded-[32px] *
-            ${scrolling ? " w-[70px] h-[50.89px] border-black border-[1px] " : " w-[120px] h-[82.89px] border-black border-[1px] "}`}
-          />
+      {!scrolling ? (
+        <div
+          className={`hidden fixed md:flex lg:flex justify-between items-center py-[12px] px-[100px] font-migra text-font-blue text-[16px] leading-[19.36px] font-[800] transition-all ease-in-out duration-700 rounded-none shadow-navBar bg-bg-yellow w-[100%] left-0 right-0 h-[106.89px]`}
+        >
+          <div className="m-2">
+            <img
+              src="/logo.png"
+              alt="logo"
+              className={`p-2 transition-all ease-in-out duration-300 rounded-[32px] w-[120px] h-[82.89px]`}
+            />
+          </div>
+          <div className="md:text-md flex gap-[32px]">
+            <Link to="/">Home</Link>
+            <Link to="/">Menu</Link>
+            <Link to="/">Our team</Link>
+            <Link to="/">Blog</Link>
+            <Link to="/">Contact us</Link>
+          </div>
         </div>
-
-        <div className="md:text-md flex gap-[32px]">
-          <Link to="/">Home</Link>
-          <Link to="/">Menu</Link>
-          <Link to="/">Our team</Link>
-          <Link to="/">Blog</Link>
-          <Link to="/">Contact us</Link>
+      ) : (
+        <div className="flex w-full justify-center items-center">
+          <div>
+            <motion.div
+              className="w-[382px] h-[62px] rounded-l-[40px] bg-white hidden fixed md:flex lg:flex justify-center items-center border-[1px] border-black m-4 left-[calc(50%-460px)] top-[66px] z-0"
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              variants={variants}
+              transition={{ duration: 0.7, ease: 'easeInOut' }}
+            >
+              <div className="flex gap-[32px] text-[16px] font-migra leading-[19.36px] text-[#233780]">
+                <Link to="/">Home</Link>
+                <Link to="/">Menu</Link>
+                <Link to="/">Our team</Link>
+              </div>
+            </motion.div>
+            <motion.div
+              className="hidden md:flex lg:flex fixed top-[30px] left-[calc(50%-70px)] w-[150px] h-[150px] rounded-full bg-white border-[1px] border-black justify-center items-center z-10"
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              variants={variants}
+              transition={{ duration: 0.7, ease: 'easeInOut' }}
+            >
+              <img src="/logo.png" alt="logo" className="w-[120px] h-[82.89px] m-4" />
+            </motion.div>
+            <motion.div
+              className="w-[382px] h-[62px] rounded-r-[40px] bg-white hidden fixed md:flex lg:flex justify-center items-center border-[1px] border-black m-4 right-[calc(50%-460px)] top-[66px] z-0"
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              variants={variants}
+              transition={{ duration: 0.7, ease: 'easeInOut' }}
+            >
+              <div className="flex justify-end text-end gap-[32px] text-[16px] font-migra leading-[19.36px] text-[#233780]">
+                <Link to="/">Blog</Link>
+                <Link to="/">Contact us</Link>
+              </div>
+            </motion.div>
+          </div>
         </div>
-
-        
-      </div>
+      )}
     </div>
   );
 };
