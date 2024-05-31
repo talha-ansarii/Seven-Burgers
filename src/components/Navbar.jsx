@@ -67,9 +67,10 @@ const Navbar = () => {
           </div>
           <div className="md:text-md flex gap-[32px]">
             <Link to="/">Home</Link>
-            <Link to="/">Menu</Link>
             <Link to="/">Our team</Link>
             <Link to="/">Blog</Link>
+            <Link to="/">Faqs</Link>
+            <Link to="/">About us</Link>
             <Link to="/">Contact us</Link>
           </div>
         </div>
@@ -77,7 +78,7 @@ const Navbar = () => {
         <div className="flex w-full justify-center items-center">
           <div>
             <motion.div
-              className="w-[382px] h-[62px] rounded-l-[40px] bg-white hidden fixed md:flex lg:flex justify-center items-center border-[1px] border-black m-4 left-[calc(50%-460px)] top-[66px] z-0"
+              className="w-[382px] h-[62px] rounded-l-[40px] bg-white hidden fixed md:flex lg:flex justify-center items-center border-[1px] border-black m-4 left-[calc(50%-458px)] top-[66px] z-0"
               initial="hidden"
               animate="visible"
               exit="exit"
