@@ -19,15 +19,16 @@ function ScrollSection() {
         translateX: 0,
       },
       {
-        translateX:  windowWidth > 768 ? -windowWidth : -windowWidth * 3,
+        translateX:  windowWidth > 800 ? -windowWidth * 0.8 : windowWidth > 500 ? -windowWidth * 3 : windowWidth > 400 ? -windowWidth * 6 : -windowWidth * 8,
         ease: "none",
         duration: 1,
         scrollTrigger: {
           trigger: triggerRef.current,
-          start: `${windowWidth > 768 ? "top" : "center"} ${windowWidth > 768 ? "top" : "center"}`,
-          end: `1000 top`,
+          start: `center center`,
+          end: `1000 300`,
           scrub: 0.6,
           pin: true,
+          markers: false,
         },
       }
     );
@@ -37,7 +38,7 @@ function ScrollSection() {
   }, []);
 
   return (
-    <section className="overflow w-full">
+    <section className="overflow-hidden w-full">
       <div ref={triggerRef}>
         <div
           ref={sectionRef}

@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { RxHamburgerMenu, RxCross2 } from "react-icons/rx";
 import { animateScroll as scroll } from "react-scroll";
-import { motion } from 'framer-motion';
-
+import { motion } from "framer-motion";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolling, setScrolling] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
   const variants = {
     hidden: { opacity: 0, y: -20 },
     visible: { opacity: 1, y: 0 },
@@ -54,28 +55,75 @@ const Navbar = () => {
         </div>
       </div>
 
-      {!scrolling ? (
-        <div
-          className={`hidden fixed md:flex lg:flex justify-between items-center py-[12px] px-[100px] font-migra text-font-blue text-[16px] leading-[19.36px] font-[800] transition-all ease-in-out duration-700 rounded-none shadow-navBar bg-bg-yellow w-[100%] left-0 right-0 h-[106.89px]`}
+        <motion.div
+          animate={{
+            
+            alignItems: `${!scrolling ? "center" : ""}`,
+            top: `${!scrolling ? "0" : "66px"}`,
+            left: `${!scrolling ? "0" : `calc(${(windowWidth - (0.9 * windowWidth))/2}px)`}`,
+            // transform: `${!scrolling ? "none" : "translateX(-50%)"}`,
+            backgroundColor: `${!scrolling ? "#FED676" : "white"}`,
+            borderRadius: `${!scrolling ? "none" : "50px"}`,
+            width: `${!scrolling ? "100%" : "90%"}`,
+            height: `${!scrolling ? "80.89px" : "62px"}`,
+            margin: `${!scrolling ? "0" : "16px"}`,
+          }}
+          transition={{ duration: 0.5, ease: "easeIn" }}
+          className={`${
+            !scrolling
+              ? "hidden fixed md:flex lg:flex justify-between items-center py-[12px] px-[100px] font-migra text-font-blue text-[16px] leading-[19.36px] font-[800] shadow-navBar "
+              : " transition-all ease-in-out duration-700 w-[900px] h-[62px] rounded-[40px] bg-white hidden fixed md:flex lg:flex justify-center items-center border-[1px] border-black m-auto "
+          }`}
         >
-          <div className="m-2">
+          <motion.div
+            animate={{
+              x: `${!scrolling ? 0 : "235px"}`,
+              width: `${!scrolling ? "120px" : "150px"}`,
+              height: `${!scrolling ? "82.89px" : "150px"}`,
+              borderRadius: `${!scrolling ? "32px" : "50%"}`,
+              border: `${!scrolling ? "none" : "1px solid black"}`,
+              display: `${!scrolling ? "flex" : "flex"}`,
+              justifyContent: `${!scrolling ? "center" : "center"}`,
+              alignItems: `${!scrolling ? "center" : "center"}`,
+              backgroundColor: `${!scrolling ? "transparent" : "white"}`,
+            }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+          >
             <img
               src="/logo.png"
               alt="logo"
-              className={`p-2 transition-all ease-in-out duration-300 rounded-[32px] w-[120px] h-[82.89px]`}
+              className={`${
+                !scrolling ? " h-[70px] w-[120px]" : " w-[150px] h-[104px] p-4"
+              }`}
             />
-          </div>
+          </motion.div>
           <div className="md:text-md flex gap-[32px]">
-            <Link to="/">Home</Link>
-            <Link to="/">Our team</Link>
-            <Link to="/">Blog</Link>
-            <Link to="/">Faqs</Link>
-            <Link to="/">About us</Link>
-            <Link to="/">Contact us</Link>
+            <motion.div
+              animate={{
+                x: `${!scrolling ? 0 : "-230px"}`,
+              }}
+              transition={{ duration: 0.7, ease: "easeInOut" }}
+              className="flex gap-[32px] text-[16px] font-migra leading-[19.36px] text-[#233780] "
+            >
+              <Link to="/">Home</Link>
+              <Link to="/">Our team</Link>
+              <Link to="/">Blog</Link>
+            </motion.div>
+            <motion.div
+              animate={{
+                x: `${!scrolling ? 0 : "100px"}`,
+              }}
+              transition={{ duration: 0.7, ease: "easeInOut" }}
+              className="flex gap-[32px] text-[16px] font-migra leading-[19.36px] text-[#233780]"
+            >
+              <Link to="/">Faqs</Link>
+              <Link to="/">About us</Link>
+              <Link to="/">Contact us</Link>
+            </motion.div>
           </div>
-        </div>
-      ) : (
-        <div className="flex w-full justify-center items-center">
+        </motion.div>
+
+      {/* <div className="flex w-full justify-center items-center">
           <div>
             <motion.div
               className="w-[382px] h-[62px] rounded-l-[40px] bg-white hidden fixed md:flex lg:flex justify-center items-center border-[1px] border-black m-4 left-[calc(50%-458px)] top-[66px] z-0"
@@ -116,8 +164,7 @@ const Navbar = () => {
               </div>
             </motion.div>
           </div>
-        </div>
-      )}
+        </div> */}
     </div>
   );
 };

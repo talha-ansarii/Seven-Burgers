@@ -8,9 +8,10 @@ const Bestseller = () => {
       <h1 class="animate-text bg-gradient-to-r from-slate-300 via-font-blue to-slate-300 bg-clip-text text-transparent text-[55px] leading-[66.55px] font-migra">
         Bestseller
       </h1>
-      <ScrollSection />
+      <ScrollSection/>
+      
       <div className="w-full mt-10 flex justify-center items-center">
-        <div className=' bg-[url("/bg.png")]  bg-cover w-[100%] md:w-[1318px] lg:w-[1318px] md:h-[655px]  lg:h-[655px] border-[1px] md:py-[90px] p-4 md:px-[44px] lg:py-[90px] lg:px-[44px] rounded-[58px] border-black flex flex-col md:flex-row lg:flex-row gap-[24px] justify-evenly items-center'>
+        <div className=' bg-[url("/bg.png")]  bg-cover w-[100%] h-[700px] md:w-[1318px] lg:w-[1318px] md:h-[655px]  lg:h-[655px] border-[1px] md:py-[90px] pt-10 md:p-4 md:px-[44px] lg:py-[90px] lg:px-[44px] rounded-[58px] border-black flex flex-col md:flex-row lg:flex-row gap-[24px] md:justify-evenly items-center'>
           <div className="flex flex-col gap-[24px] w-[70%] md:w-[444px] lg:w-[444px]">
             <div className="font-migra text-[30px] text-font-blue md:text-[55px] md:leading-[55px] lg:text-[55px] lg:leading-[55px]">
               our Commitment to quality?
@@ -23,15 +24,15 @@ const Bestseller = () => {
               <img src="/arrow.svg" alt="arrow" />
             </button>
           </div>
-          <div className="relative md:w-[497px] w-[80%] lg:w-[497px] group md:overflow-hidden lg:overflow-hidden  lg:h-[363px] md:h-[363px] rounded-[20px] border-[3px] border-black ">
+          <div className="relative md:w-[497px] w-[80%] lg:w-[497px] group overflow-hidden md:overflow-hidden lg:overflow-hidden h-[300px]  lg:h-[363px] md:h-[363px] rounded-[20px]  ">
             <div>
               <img
-                className="absolute md:w-[497px] z-10  md:h-[363px] lg:w-[497px]  lg:h-[363px] rounded-[18px] border-[3px] border-black"
+                className="absolute md:w-[497px] z-10 h-[300px] md:h-[363px] lg:w-[497px]  lg:h-[363px] rounded-[18px] border-[3px] border-black"
                 src="/burger2.png"
                 alt="burger"
               />
             </div>
-            <div className=" absolute top-[370px] transition-all ease-in duration-300 group-hover:top-[284px] border-[3px] border-black  bg-bg-yellow z-20 p-3  rounded-[20px] inter font-[600] text-[20px] leading-[24.2px] text-center">
+            <div className=" group-hover:bottom-[0%] absolute bottom-[-100%] md:top-[370px] lg:top-[370px] transition-all ease-in duration-300 md:group-hover:top-[284px] lg:group-hover:top-[284px] border-[3px] border-black  bg-bg-yellow z-20 p-3  rounded-[20px] inter font-[600] text-[20px] leading-[24.2px] text-center">
               An adventurous foodie, Seven Burgers offers a fine culinary
               experience.
             </div>
