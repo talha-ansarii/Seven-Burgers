@@ -23,15 +23,15 @@ const Bestseller = () => {
               <img src="/arrow.svg" alt="arrow" />
             </button>
           </div>
-          <div className="w-[497px] bg-[#FED676] h-[363px] rounded-[20px] border-[3px] border-black ">
+          <div className="relative w-[497px] group overflow-hidden  h-[363px] rounded-[20px] border-[3px] border-black ">
             <div>
               <img
-                className="w-[497px] h-[291px] rounded-[18px] border-[3px] border-black"
+                className="absolute w-[497px] z-10  h-[363px]  rounded-[18px] border-[3px] border-black"
                 src="/burger2.png"
                 alt="burger"
               />
             </div>
-            <div className="h-[120px] p-3 rounded-[20px] inter font-[600] text-[20px] leading-[24.2px] text-center">
+            <div className=" absolute top-[370px] transition-all ease-in duration-300 group-hover:top-[284px] border-[3px] border-black  bg-bg-yellow z-20 p-3  rounded-[20px] inter font-[600] text-[20px] leading-[24.2px] text-center">
               An adventurous foodie, Seven Burgers offers a fine culinary
               experience.
             </div>
