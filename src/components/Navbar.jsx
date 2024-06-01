@@ -86,9 +86,9 @@ const Navbar = () => {
               transition={{ duration: 0.7, ease: 'easeInOut' }}
             >
               <div className="flex gap-[32px] text-[16px] font-migra leading-[19.36px] text-[#233780]">
-                <Link to="/">Home</Link>
-                <Link to="/">Menu</Link>
-                <Link to="/">Our team</Link>
+              <Link to="/">Home</Link>
+            <Link to="/">Our team</Link>
+            <Link to="/">Blog</Link>
               </div>
             </motion.div>
             <motion.div
@@ -110,8 +110,9 @@ const Navbar = () => {
               transition={{ duration: 0.7, ease: 'easeInOut' }}
             >
               <div className="flex justify-end text-end gap-[32px] text-[16px] font-migra leading-[19.36px] text-[#233780]">
-                <Link to="/">Blog</Link>
-                <Link to="/">Contact us</Link>
+              <Link to="/">Faqs</Link>
+            <Link to="/">About us</Link>
+            <Link to="/">Contact us</Link>
               </div>
             </motion.div>
           </div>

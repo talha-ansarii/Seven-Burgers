@@ -6,7 +6,7 @@ import Bestseller from "../components/Bestseller";
 
 const Home = () => {
   return (
-    <div className="w-full overflow-x-hidden  h-auto">
+    <div className="w-full overflow-x-hidden">
       <Navbar />
       <div className="flex flex-col md:flex-row bg-bg-yellow lg:flex-row justify-center items-center md:bg-bg-yellow md:pt-[55px] lg:pt-[55px] pt-[20px] w-full h-[667px]">
         <div className="w-full md:w-[60%] lg:w-[50%] flex flex-col md:p-5 lg:p-5 pl-10 box-border">
@@ -33,6 +33,8 @@ const Home = () => {
 
       <Marquee/>
       <Bestseller/>
+      
+
     </div>
   );
 };
