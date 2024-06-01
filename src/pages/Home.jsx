@@ -9,7 +9,7 @@ const Home = () => {
     <div className="w-full overflow-x-hidden">
       <Navbar />
       <div className="flex flex-col md:flex-row bg-bg-yellow lg:flex-row justify-center items-center md:bg-bg-yellow md:pt-[55px] lg:pt-[55px] pt-[20px] w-full h-[667px]">
-        <div className="w-full md:w-[60%] lg:w-[50%] flex flex-col md:p-5 lg:p-5 pl-10 box-border">
+        <div className="w-full mt-10 md:w-[60%] lg:w-[50%] flex flex-col md:p-5 lg:p-5 pl-10 box-border">
           <div>
             <TextRevealCard
               text="A taste of Aristocracy"
@@ -22,9 +22,9 @@ const Home = () => {
           </button>
         </div>
 
-        <div className="flex  justify-center md:justify-start max-w-full md:max-w-[657px] lg:w-[50%]">
+        <div className="flex -mt-10 justify-center md:justify-start w-[400px] md:max-w-[657px] lg:w-[50%]">
           <img
-            className="md:max-h-[707px] "
+            className="md:h-[707px]  "
             src="/burger.png"
             alt="burger"
           />

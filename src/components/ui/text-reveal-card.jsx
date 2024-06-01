@@ -88,7 +88,7 @@ function mouseEnterHandler() {
         >
           <p
             
-            className=" text-[70px] leading-[70px] md:text-[105px] md:leading-[105px] lg:text-[105px] lg:leading-[105px] py-10 font-bold  bg-clip-text text-[#152663] font-migra"
+            className=" text-[50px] leading-[50px] md:text-[105px] md:leading-[105px] lg:text-[105px] lg:leading-[105px] md:py-10  lg:py-10 font-bold p-2  bg-clip-text text-[#152663] font-migra"
           >
             {revealText}
           </p>
@@ -103,8 +103,8 @@ function mouseEnterHandler() {
           className="h-[300px] w-[8px] bg-gradient-to-b from-transparent via-neutral-800 to-transparent absolute z-50 will-change-transform"
         ></motion.div>
 
-        <div className=" overflow-hidden w-[200%] ">
-          <p className=" text-[60px] leading-[60px] md:text-[70px] md:leading-[70px] lg:text-[105px] lg:leading-[105px] py-10 font-migra font-bold text-[#152663] ">
+        <div className=" overflow-hidden w-[200%]  ">
+          <p className=" text-[50px] leading-[50px] md:text-[70px] md:leading-[70px] lg:text-[105px] lg:leading-[105px] p-2 font-migra font-bold text-[#152663] ">
             {text}
           </p>
           
