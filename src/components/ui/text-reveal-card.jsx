@@ -62,13 +62,13 @@ function mouseEnterHandler() {
       onTouchMove={touchMoveHandler}
       ref={cardRef}
       className={cn(
-        "bg-[transparent] border border-white/[0.08] w-full rounded-lg p-8 relative overflow-hidden",
+        "bg-[transparent]  w-full  rounded-lg pb-8 relative overflow-hidden",
         className
       )}
     >
       {children}
 
-      <div className="h-auto  relative flex items-center overflow-hidden">
+      <div className="h-auto w-full   relative flex items-center overflow-hidden">
         <motion.div
           style={{
             width: "100%",
@@ -103,7 +103,7 @@ function mouseEnterHandler() {
           className="h-[300px] w-[8px] bg-gradient-to-b from-transparent via-neutral-800 to-transparent absolute z-50 will-change-transform"
         ></motion.div>
 
-        <div className=" overflow-hidden w-[200%]  ">
+        <div className=" overflow-hidden  w-full   ">
           <p className=" text-[50px] leading-[50px] md:text-[70px] md:leading-[70px] lg:text-[105px] lg:leading-[105px] p-2 font-migra font-bold text-[#152663] ">
             {text}
           </p>

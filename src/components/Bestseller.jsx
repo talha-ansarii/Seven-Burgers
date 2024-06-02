@@ -24,17 +24,20 @@ const Bestseller = () => {
               <img src="/arrow.svg" alt="arrow" />
             </button>
           </div>
-          <div className="relative md:w-[497px] w-[80%] lg:w-[497px] group overflow-hidden md:overflow-hidden lg:overflow-hidden h-[300px]  lg:h-[363px] md:h-[363px] rounded-[20px]  ">
+          <div className="relative md:w-[497px] w-[80%] lg:w-[497px] group  h-[300px]  lg:h-[363px] md:h-[363px] rounded-[20px]  ">
             <div>
               <img
-                className="absolute md:w-[497px] z-10 h-[300px] md:h-[363px] lg:w-[497px]  lg:h-[363px] rounded-[18px] border-[3px] border-black"
+                className="absolute md:w-[497px] z-20 h-[300px] md:h-[363px] lg:w-[497px]  lg:h-[363px] rounded-[18px] border-[3px] border-black"
                 src="/burger2.png"
                 alt="burger"
               />
             </div>
-            <div className=" group-hover:bottom-[0%] absolute bottom-[-100%] md:top-[370px] lg:top-[370px] transition-all ease-in duration-300 md:group-hover:top-[284px] lg:group-hover:top-[284px] border-[3px] border-black  bg-bg-yellow z-20 p-3  rounded-[20px] inter font-[600] text-[20px] leading-[24.2px] text-center">
+            <div className=" group-hover:bottom-[0%] absolute bottom-[-100%] transition-all ease-in-outn duration-500 md:top-[60%] lg:top-[60%] border-[3px] md:group-hover:top-[93%] border-black  bg-bg-yellow z-10 p-3  rounded-b-[20px] inter font-[600] text-[20px] leading-[24.2px] text-center h-[100px] flex items-end">
+            <p>
+
               An adventurous foodie, Seven Burgers offers a fine culinary
               experience.
+            </p>
             </div>
           </div>
         </div>

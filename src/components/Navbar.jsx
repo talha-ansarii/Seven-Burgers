@@ -14,18 +14,25 @@ const Navbar = () => {
     visible: { opacity: 1, y: 0 },
     exit: { opacity: 0, y: -20 },
   };
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+      useEffect(() => {
+        const handleScroll = () => {
+            setScrolling(window.scrollY > 20);
+        };
 
-  const handleScroll = () => {
-    if (window.scrollY > 20) {
-      setScrolling(true);
-    } else {
-      setScrolling(false);
-    }
-  };
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+
 
   const handleMenu = () => {
     setIsOpen(!isOpen);
@@ -47,10 +54,11 @@ const Navbar = () => {
             }`}
           >
             <Link to="/">Home</Link>
-            <Link to="/">Menu</Link>
             <Link to="/">Our team</Link>
             <Link to="/">Blog</Link>
-            <Link to="/">Contact us</Link>
+            <Link to="/">Faqs</Link>
+              <Link to="/">About us</Link>
+              <Link to="/">Contact us</Link>
           </div>
         </div>
       </div>
@@ -60,13 +68,13 @@ const Navbar = () => {
             
             alignItems: `${!scrolling ? "center" : ""}`,
             top: `${!scrolling ? "0" : "66px"}`,
-            left: `${!scrolling ? "0" : `calc(${(windowWidth - (0.9 * windowWidth))/2}px)`}`,
+            left: `${!scrolling ? "0" : `calc(${0.05 * windowWidth}px)`}`,
             // transform: `${!scrolling ? "none" : "translateX(-50%)"}`,
             backgroundColor: `${!scrolling ? "#FED676" : "white"}`,
             borderRadius: `${!scrolling ? "none" : "50px"}`,
             width: `${!scrolling ? "100%" : "90%"}`,
             height: `${!scrolling ? "80.89px" : "62px"}`,
-            margin: `${!scrolling ? "0" : "16px"}`,
+            margin: `${!scrolling ? "0" : "0px"}`,
           }}
           transition={{ duration: 0.5, ease: "easeIn" }}
           className={`${
@@ -100,7 +108,7 @@ const Navbar = () => {
           <div className="md:text-md flex gap-[32px]">
             <motion.div
               animate={{
-                x: `${!scrolling ? 0 : "-230px"}`,
+                x: `${!scrolling ? 0 : "-80%"}`,
               }}
               transition={{ duration: 0.7, ease: "easeInOut" }}
               className="flex gap-[32px] text-[16px] font-migra leading-[19.36px] text-[#233780] "
@@ -111,7 +119,7 @@ const Navbar = () => {
             </motion.div>
             <motion.div
               animate={{
-                x: `${!scrolling ? 0 : "100px"}`,
+                x: `${!scrolling ? 0 : "7%"}`,
               }}
               transition={{ duration: 0.7, ease: "easeInOut" }}
               className="flex gap-[32px] text-[16px] font-migra leading-[19.36px] text-[#233780]"
