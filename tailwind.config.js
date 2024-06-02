@@ -2,7 +2,6 @@ const {
   default: flattenColorPalette,
 } = require("tailwindcss/lib/util/flattenColorPalette");
 
-
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
@@ -14,31 +13,52 @@ export default {
         "font-blue": "#233780",
       },
       fontFamily: {
-        migra: ['Migra', 'sans-serif'],
+        migra: ["Migra", "sans-serif"],
       },
       animation: {
-        marquee: 'marquee 30s linear infinite',
-        text: 'text 5s ease infinite',
+        marquee: "marquee 30s linear infinite",
+        text: "text 5s ease infinite",
+        glass: "glass 5s linear infinite",
+        glass2: "glass2 6s linear infinite",
       },
       keyframes: {
         marquee: {
-          '0%': { transform: 'translateX(0%)' },
-          '100%': { transform: 'translateX(-100%)' },
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-100%)" },
         },
         text: {
-          '0%, 100%': {
-            'background-size': '200% 200%',
-            'background-position': 'left center',
+          "0%, 100%": {
+            "background-size": "2% 0%",
+            "background-position": "left center",
           },
-          '50%': {
-            'background-size': '200% 200%',
-            'background-position': 'right center',
+          "50%": {
+            "background-size": "2% 0%",
+            "background-position": "right center",
           },
         },
+        glass2: {
+          "0%": {
+            left: "0%",
+          },
+
+          "100%": {
+            left: "100%",
+          },
+        },
+        glass: {
+          "0%": {
+            left: "0%",
+          },
+
+          "100%": {
+            left: "100%",
+          },
+        },
+       
       },
     },
   },
-  
+
   plugins: [addVariablesForColors],
 };
 
@@ -47,7 +67,7 @@ function addVariablesForColors({ addBase, theme }) {
   let newVars = Object.fromEntries(
     Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
   );
- 
+
   addBase({
     ":root": newVars,
   });

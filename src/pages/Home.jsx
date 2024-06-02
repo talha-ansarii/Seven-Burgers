@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import { TextRevealCard } from "../components/ui/text-reveal-card";
 import Marquee from "../components/Marquee";
 import Bestseller from "../components/Bestseller";
+import SevenSecrets from "../components/SevenSecrets";
 
 const Home = () => {
   return (
@@ -40,6 +41,7 @@ const Home = () => {
 
       <Marquee/>
       <Bestseller/>
+      <SevenSecrets/>
 
     </div>
   );
