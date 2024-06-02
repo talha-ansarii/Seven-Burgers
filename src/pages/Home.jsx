@@ -4,6 +4,7 @@ import { TextRevealCard } from "../components/ui/text-reveal-card";
 import Marquee from "../components/Marquee";
 import Bestseller from "../components/Bestseller";
 import SevenSecrets from "../components/SevenSecrets";
+import SevenSecretSauce from "../components/SevenSecretSauce";
 
 const Home = () => {
   return (
@@ -42,6 +43,8 @@ const Home = () => {
       <Marquee/>
       <Bestseller/>
       <SevenSecrets/>
+        
+      <SevenSecretSauce/>
 
     </div>
   );

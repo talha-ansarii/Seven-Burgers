@@ -1,3 +1,5 @@
+import { SiCalendly } from "react-icons/si";
+
 const {
   default: flattenColorPalette,
 } = require("tailwindcss/lib/util/flattenColorPalette");
@@ -20,6 +22,7 @@ export default {
         text: "text 5s ease infinite",
         glass: "glass 5s linear infinite",
         glass2: "glass2 6s linear infinite",
+        star: "star 5s linear infinite",
       },
       keyframes: {
         marquee: {
@@ -53,6 +56,20 @@ export default {
           "100%": {
             left: "100%",
           },
+        },
+        star: {
+          "0%": {
+            transform: "rotate(0deg)",
+            scale : "1"
+          },
+          "50%": {
+            transform: "rotate(180deg)",
+            scale : "0.7"
+          },
+          "100%": {
+            transform: "rotate(360deg)",
+            scale : "1"
+          }
         },
        
       },

@@ -26,6 +26,10 @@
   .glass-bar{
     animation-delay: 1s
   }
+  .seven-sauce-shadow{
+    box-shadow: 12px 12px 0px 0px #000000;
+
+  }
 
 
 
