@@ -5,6 +5,8 @@ import Marquee from "../components/Marquee";
 import Bestseller from "../components/Bestseller";
 import SevenSecrets from "../components/SevenSecrets";
 import SevenSecretSauce from "../components/SevenSecretSauce";
+import Savor from "../components/Savor";
+import Footer from "../components/Footer";
 
 const Home = () => {
   return (
@@ -45,6 +47,8 @@ const Home = () => {
       <SevenSecrets/>
         
       <SevenSecretSauce/>
+      <Savor/>
+      <Footer/>
 
     </div>
   );
