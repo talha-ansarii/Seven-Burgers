@@ -40,7 +40,7 @@ const Hero = () => {
 
       <Marquee />
       <Bestseller />
-      {/* <Test /> */}
+      
     </div>
   );
 };
