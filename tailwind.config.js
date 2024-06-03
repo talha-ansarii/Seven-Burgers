@@ -20,8 +20,8 @@ export default {
       animation: {
         marquee: "marquee 30s linear infinite",
         text: "text 5s ease infinite",
-        glass: "glass 5s linear infinite",
-        glass2: "glass2 6s linear infinite",
+        glass: "glass 7s linear infinite",
+        glass2: "glass2 10s linear infinite",
         star: "star 5s linear infinite",
       },
       keyframes: {
@@ -41,22 +41,26 @@ export default {
         },
         glass2: {
           "0%": {
-            left: "0%",
+              left: "0%",
           },
-
-          "100%": {
-            left: "100%",
+          "57%": {
+              left: "100%",
           },
-        },
-        glass: {
+          "100%" : {
+              left: "120%", /* Hold position for 3 seconds */
+          }
+      },
+        glass : {
           "0%": {
-            left: "0%",
+              left: "-30%",
           },
-
-          "100%": {
-            left: "100%",
+          "57%": {
+              left: "100%",
           },
-        },
+          "100%" : {
+              left: "120%", /* Hold position for 3 seconds */
+          }
+      },
         star: {
           "0%": {
             transform: "rotate(0deg)",

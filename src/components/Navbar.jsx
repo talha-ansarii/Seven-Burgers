@@ -101,7 +101,7 @@ const Navbar = () => {
               src="/logo.png"
               alt="logo"
               className={`${
-                !scrolling ? " h-[70px] w-[120px]" : " w-[150px] h-[104px] p-4"
+                !scrolling ? " h-[50px] w-[80px]" : " w-[150px] h-[104px] p-4"
               }`}
             />
           </motion.div>

@@ -88,9 +88,11 @@ function mouseEnterHandler() {
         >
           <p
             
-            className=" text-[50px] leading-[50px] md:text-[105px] md:leading-[105px] lg:text-[105px] lg:leading-[105px] md:py-10  lg:py-10 font-bold p-2  bg-clip-text text-[#152663] font-migra"
+            className=" text-[50px] leading-[50px] md:text-[105px] md:leading-[105px] lg:text-[100px] lg:leading-[105px] md:py-10  lg:py-10 font-bold p-2  bg-clip-text text-[#152663] font-migra"
           >
-            {revealText}
+            Burger’s 
+            <br />
+            for rich
           </p>
         </motion.div>
         <motion.div
@@ -104,7 +106,7 @@ function mouseEnterHandler() {
         ></motion.div>
 
         <div className=" overflow-hidden  w-full   ">
-          <p className=" text-[50px] leading-[50px] md:text-[70px] md:leading-[70px] lg:text-[105px] lg:leading-[105px] p-2 font-migra font-bold text-[#152663] ">
+          <p className=" text-[50px] leading-[50px] md:text-[70px] md:leading-[70px] lg:text-[100px] lg:leading-[100px] p-2 font-migra font-bold text-[#152663] ">
             {text}
           </p>
           

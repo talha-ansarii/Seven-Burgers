@@ -4,7 +4,7 @@ const Savor = () => {
   return (
     <div className='bg-[#F4EBDC]'>
 
-    <div className='bg-[#233780] pb-9 rounded-b-[60px]'>
+    <div className='bg-[#233780] md:p-9 pb-9 rounded-b-[60px]'>
     <div className='flex flex-col justify-center md:flex-row py-[50px]'>
     <div className='flex gap-4 flex-col p-4 md:w-[90%] lg:w-[40%]'  >
         <div className='font-migra  text-[40px]  md:text-[20px] lg:text-[55px] leading-[40px] md:leading-[20px] lg:leading-[55px]  text-white'>
@@ -17,7 +17,7 @@ const Savor = () => {
     </div>
 
     </div>
-    <div className='flex flex-col gap-4 justify-center px-[20px] py-[10px] pb-[50px] '>
+    <div className='flex flex-col gap-4 justify-center px-[20px] py-[50px] pb-[50px] '>
     <div className='font-migra lg:ml-[80px] md:ml-[60px] text-[30px] mb-4  md:text-[20px] lg:text-[55px] leading-[40px] md:leading-[20px] lg:leading-[55px]  text-[#FED676]'>What’s Up Grill Gang</div>
     <div className='flex w-[90%] m-auto flex-col md:flex-row gap-6 justify-between items-center' >
     <a href=''>

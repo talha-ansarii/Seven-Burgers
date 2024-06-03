@@ -45,8 +45,25 @@
     box-shadow: 2px 3px 0px 0px #000000;
   }
 
+
+  :root {
+    --cards: 4;
+    --cardHeight: 87vh;
+    --cardTopPadding: 0em;
+    --cardMargin: 4vw;
+}
+
+.card {
+    top: 0;
+    padding-top: calc(var(--index) * var(--cardTopPadding));
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 0; /* Adjust this value as needed */
+    z-index: 10;
+
+}
   
-  
+ 
   
   .btn-shine {
     
@@ -56,6 +73,7 @@
     background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: shine 3s infinite linear;
+    animation-delay: 3s;
     animation-fill-mode: forwards;
     -webkit-text-size-adjust: none;
     font-weight: 800;
