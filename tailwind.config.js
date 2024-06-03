@@ -1,3 +1,4 @@
+import { filter } from "lodash";
 import { SiCalendly } from "react-icons/si";
 
 const {
@@ -23,6 +24,7 @@ export default {
         glass: "glass 7s linear infinite",
         glass2: "glass2 10s linear infinite",
         star: "star 5s linear infinite",
+        intro: "intro 1.5s ease 1",
       },
       keyframes: {
         marquee: {
@@ -73,6 +75,22 @@ export default {
           "100%": {
             transform: "rotate(360deg)",
             scale : "1"
+          }
+        },
+        intro: {
+          "0%": {
+            scale : "0",
+            filter : "blur(0px)"
+          },
+          "50%": {
+            scale : "10",
+            filter : "blur(0px)",
+            top : "20%",
+          },
+          "100%": {
+            scale : "25",
+            filter : "blur(1px)",
+            top : "-30%",
           }
         },
        

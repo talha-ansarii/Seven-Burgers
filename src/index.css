@@ -62,6 +62,15 @@
     z-index: 10;
 
 }
+
+.backdrop {
+  /* Standard syntax */
+  backdrop-filter: blur(8px);
+  /* Vendor prefixed */
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+}
   
  
   
