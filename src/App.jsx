@@ -1,14 +1,15 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./components/Hero";
 import "./App.css";
-import Test from "./pages/HomePage";
 import HomePage from "./pages/HomePage";
+import Contact from "./pages/Contact";
+
 function App() {
   return (
     <div className="">
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/test" element={<Test />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </div>
   );

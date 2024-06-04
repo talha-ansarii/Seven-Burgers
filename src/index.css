@@ -44,14 +44,11 @@
   .shadow-order-button{
     box-shadow: 2px 3px 0px 0px #000000;
   }
+  .shadow-input{
+    box-shadow: 0px 3px 0px 0px #000000;
+  }
 
 
-  :root {
-    --cards: 4;
-    --cardHeight: 87vh;
-    --cardTopPadding: 0em;
-    --cardMargin: 4vw;
-}
 
 .card {
     top: 0;

@@ -58,7 +58,7 @@ const Navbar = () => {
             <Link to="/">Blog</Link>
             <Link to="/">Faqs</Link>
               <Link to="/">About us</Link>
-              <Link to="/">Contact us</Link>
+              <Link to="/contact">Contact us</Link>
           </div>
         </div>
       </div>
@@ -126,7 +126,7 @@ const Navbar = () => {
             >
               <Link to="/">Faqs</Link>
               <Link to="/">About us</Link>
-              <Link to="/">Contact us</Link>
+              <Link to="/contact">Contact us</Link>
             </motion.div>
           </div>
         </motion.div>
