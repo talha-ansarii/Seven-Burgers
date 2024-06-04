@@ -8,7 +8,7 @@ function ScrollSection() {
   const triggerRef = useRef(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   
-  console.log(windowWidth)
+  // console.log(windowWidth)
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -19,7 +19,8 @@ function ScrollSection() {
         translateX: 0,
       },
       {
-        translateX:  windowWidth > 800 ? -windowWidth * 2 : windowWidth > 500 ? -windowWidth * 3 : windowWidth > 400 ? -windowWidth * 6 : -windowWidth * 7,
+        // translateX:  windowWidth > 800 ? -windowWidth * 2 : windowWidth > 500 ? -windowWidth * 3 : windowWidth > 400 ? -windowWidth * 6 : -windowWidth * 7,
+        translateX : -2720 + windowWidth,
         ease: "none",
         duration: 1,
         scrollTrigger: {
@@ -38,14 +39,14 @@ function ScrollSection() {
   }, []);
 
   return (
-    <section className="overflow-hidden w-full mb-[50px]">
+    <section className="overflow-hidden w-full mb-[40px]">
       <div ref={triggerRef}>
         <div
           ref={sectionRef}
           className="relative flex  gap-4 flex-row"
         >
     
-          <div className="flex  items-center justify-center">
+          <div className="flex  items-center justify-center pl-[40px]">
             <Card/>
           </div>
           <div className="flex  items-center justify-center">
@@ -66,7 +67,7 @@ function ScrollSection() {
           <div className="flex  items-center justify-center">
             <Card/>
           </div>
-          <div className="flex  items-center justify-center">
+          <div className="flex  items-center justify-center pl-0">
             <Card/>
           </div>
           

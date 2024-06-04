@@ -2,7 +2,7 @@ import React from 'react'
 
 const Commitment = () => {
   return (
-    <div><div className="w-full bg-[#F4EBDC] p-10 sticky flex justify-center items-center">
+    <div><div className="w-full bg-[#F4EBDC] px-10 pb-10 sticky flex justify-center items-center">
     <div className=' bg-[url("/bg.png")]   bg-cover lg:w-[95%] p-14  lg:p-0 md:w-[95%]  md:h-[500px]  lg:h-[500px] border-[1px] lg:items-center  md:p-6  px-[30px]  rounded-[58px] border-black flex flex-col md:flex-row lg:flex-row gap-[24px] md:justify-around items-center '>
       <div className="flex flex-col md:m-6 gap-[24px] w-[70%] md:w-[50%] lg:w-[444px] ">
         <div className="font-migra text-[30px] leading-[30px] text-font-blue md:text-[40px] md:leading-[40px] lg:text-[55px] lg:leading-[55px]">

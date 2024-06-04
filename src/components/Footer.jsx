@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 const Footer = () => {
   return (
     <div className='bg-[#F4EBDC] flex justify-center items-center pb-[40px] '>
+    
         <div className='w-[80%] flex flex-col space-y-[30px]  '>
             <div className=' flex flex-col md:flex-row md:justify-between lg:justify-between justify-center items-center space-y-[40px]'>
 
@@ -12,9 +13,17 @@ const Footer = () => {
                     <img className=' w-[166px] ' src='/logo.svg' alt='logo' />
 
                     <div className='flex gap-2'>
+                        <a href='https://www.facebook.com/' target='_blank' rel='noreferrer'>
                         <img className='w-[32px]' src='/FacebookLogo.svg' alt='facebook' />
-                        <img className='w-[32px]' src='/xLogo.svg' alt='twitter' />
+                        </a>
+                        <a href='https://www.youtube.com/' target='_blank' rel='noreferrer'>
+                        <img className='w-[32px] ' src='/youtube.svg' alt='youtube' />
+
+                        </a>
+                        <a href='https://www.instagram.com/' target='_blank' rel='noreferrer'>
                         <img className='w-[32px]' src='/InstagramLogo.svg' alt='instagram' />
+
+                        </a>
                     </div>
                 </div>
                 <div className='flex flex-col lg:flex-row lg:text-left md:flex-row md:text-left gap-[50px] md:items-start lg:items-start justify-center  items-center text-center'>

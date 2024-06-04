@@ -54,7 +54,7 @@ const Navbar = () => {
             }`}
           >
             <Link to="/">Home</Link>
-            <Link to="/">Our team</Link>
+            <Link to="/">Menu</Link>
             <Link to="/">Blog</Link>
             <Link to="/">Faqs</Link>
               <Link to="/">About us</Link>
@@ -68,11 +68,11 @@ const Navbar = () => {
             
             alignItems: `${!scrolling ? "center" : ""}`,
             top: `${!scrolling ? "0" : "66px"}`,
-            left: `${!scrolling ? "0" : `calc(${0.05 * windowWidth}px)`}`,
+            left: `${!scrolling ? "0" : `calc(${0.10 * windowWidth}px)`}`,
             // transform: `${!scrolling ? "none" : "translateX(-50%)"}`,
             backgroundColor: `${!scrolling ? "#FED676" : "white"}`,
             borderRadius: `${!scrolling ? "none" : "50px"}`,
-            width: `${!scrolling ? "100%" : "90%"}`,
+            width: `${!scrolling ? "100%" : "80%"}`,
             height: `${!scrolling ? "80.89px" : "62px"}`,
             margin: `${!scrolling ? "0" : "0px"}`,
           }}
@@ -80,12 +80,12 @@ const Navbar = () => {
           className={`${
             !scrolling
               ? "hidden fixed md:flex lg:flex justify-between items-center py-[12px] px-[100px] font-migra text-font-blue text-[16px] leading-[19.36px] font-[800] shadow-navBar "
-              : " transition-all ease-in-out duration-700 w-[900px] h-[62px] rounded-[40px] bg-white hidden fixed md:flex lg:flex justify-center items-center border-[1px] border-black m-auto "
+              : " transition-all ease-in-out duration-700 h-[62px] rounded-[40px] bg-white hidden fixed md:flex lg:flex justify-center items-center border-[1px] border-black m-auto "
           }`}
         >
           <motion.div
             animate={{
-              x: `${!scrolling ? 0 : "235px"}`,
+              x: `${!scrolling ? 0 : "230px"}`,
               width: `${!scrolling ? "120px" : "150px"}`,
               height: `${!scrolling ? "82.89px" : "150px"}`,
               borderRadius: `${!scrolling ? "32px" : "50%"}`,
@@ -108,18 +108,18 @@ const Navbar = () => {
           <div className="md:text-md flex gap-[32px]">
             <motion.div
               animate={{
-                x: `${!scrolling ? 0 : "-80%"}`,
+                x: `${!scrolling ? 0 : "-85%"}`,
               }}
               transition={{ duration: 0.7, ease: "easeInOut" }}
               className="flex gap-[32px] text-[16px] font-migra leading-[19.36px] text-[#233780] "
             >
               <Link to="/">Home</Link>
-              <Link to="/">Our team</Link>
+              <Link to="/">Menu</Link>
               <Link to="/">Blog</Link>
             </motion.div>
             <motion.div
               animate={{
-                x: `${!scrolling ? 0 : "7%"}`,
+                x: `${!scrolling ? 0 : "30%"}`,
               }}
               transition={{ duration: 0.7, ease: "easeInOut" }}
               className="flex gap-[32px] text-[16px] font-migra leading-[19.36px] text-[#233780]"

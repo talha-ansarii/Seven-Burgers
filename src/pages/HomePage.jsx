@@ -6,6 +6,8 @@ import Savor from "../components/Savor";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import Intro from "../components/Intro";
+import Testimonials from "../components/Testimonials";
+import GrillGang from "../components/GrillGang";
 
 
 const HomePage = () => {
@@ -41,8 +43,16 @@ const HomePage = () => {
           <div>
             <SevenSecrets />
             <SevenSecretSauce />
+            <div className="bg-[#233780] rounded-b-[60px]">
+
             <Savor />
+            <GrillGang/>
+            </div>
+            <div className="bg-[#F4EBDC]">
+
+            <Testimonials/>
             <Footer />
+            </div>
           </div>
         </li>
       </ul>

@@ -6,7 +6,7 @@ import Commitment from "./Commitment";
 
 const Bestseller = () => {
   return (
-    <div className="p-[40px] bg-[#F4EBDC]">
+    <div className="py-[40px]  bg-[#F4EBDC]">
      
 
 
