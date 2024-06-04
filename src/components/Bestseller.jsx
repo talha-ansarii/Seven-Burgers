@@ -13,7 +13,7 @@ const Bestseller = () => {
      
 <div className="relative">
 
-      <a className="btn-shine text-font-blue text-[55px] leading-[66.55px] font-migra" >Bestseller</a>
+      <a className="btn-shine pl-[40px] text-font-blue text-[55px] leading-[66.55px] font-migra" >Bestseller</a>
 </div>
 
       

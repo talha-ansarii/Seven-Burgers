@@ -30,7 +30,7 @@ const HomePage = () => {
 
   return (
     <div className="">
-    {show && <Intro />}
+    {/* {show && <Intro />} */}
 
       <Hero />
       <ul id="cards" className="list-none grid grid-cols-1">
