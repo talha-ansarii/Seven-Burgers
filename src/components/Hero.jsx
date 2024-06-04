@@ -25,7 +25,7 @@ const Hero = () => {
 
         <div className="flex flex-col items-center justify-center md:justify-start md:max-w-[657px] lg:w-[50%]">
           <img
-            className=" md:mt-20 lg:mt-20 w-[100%] scale-x-[-1]"
+            className=" md:mt-20 lg:mt-20 w-[90%] scale-x-[-1]"
             src="/burger.png"
             alt="burger"
           />
