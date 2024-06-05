@@ -49,6 +49,10 @@
   }
 
 
+  .span-two-columns {
+    grid-column: span 2; /* Spans 2 columns */
+  }
+
 
 .card {
     top: 0;

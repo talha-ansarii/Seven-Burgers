@@ -13,7 +13,6 @@ const Testimonials = () => {
     <div className=" p-12  flex items-center justify-center w-full">
       <CardStack items={CARDS} />
     </div>
-  <div className='w-full h-[1px] bg-[#A1A1A1] mb-1'></div>
   </div>
 
 
