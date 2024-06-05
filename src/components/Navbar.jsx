@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { RxHamburgerMenu, RxCross2 } from "react-icons/rx";
 import { animateScroll as scroll } from "react-scroll";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,32 +36,98 @@ const Navbar = () => {
 
   const handleMenu = () => {
     setIsOpen(!isOpen);
+
+
+  };
+
+  const containerVariants = {
+    hidden: { x: '100%',
+      transition: {
+        duration: 0.5,
+      },
+     },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.5,
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const linkVariants = {
+    hidden: { opacity: 0, x: 50,
+      transition: {
+        duration: 0.3,
+      }
+     },
+    visible: { opacity: 1, x: 0,
+      transition: {
+        duration: 0.3,
+      }
+     },
+  };
+
+  const imgVariants = {
+    hidden: { opacity: 1, x: 1000 },
+    visible: { opacity: 1, x: 0 },
   };
 
   return (
     <div className="bg-bg-yellow md:absolute md:z-50 lg:absolute lg:z-50 ">
-      <div className="relative">
-        <div
-          onClick={handleMenu}
-          className="absolute z-[200] m-4 top-0 right-0 md:hidden lg:hidden p-2 bg-font-blue w-10 h-10 flex justify-center items-center rounded-full text-white cursor-pointer shadow-md"
-        >
-          {isOpen ? <RxCross2 /> : <RxHamburgerMenu />}
-        </div>
-        <div>
-          <div
-            className={`fixed inset-0 z-[100] transition-transform transform duration-500 bg-bg-yellow justify-center items-center text-font-blue font-migra text-[50px] flex flex-col gap-[32px] ${
-              isOpen ? "translate-x-0" : "translate-x-full"
-            }`}
-          >
-            <Link to="/">Home</Link>
-            <Link to="/">Menu</Link>
-            <Link to="/">Blog</Link>
-            <Link to="/">Faqs</Link>
-              <Link to="/">About us</Link>
-              <Link to="/contact">Contact us</Link>
-          </div>
-        </div>
+       <div className="relative">
+      {/* <motion.img
+        src="/logo.png"
+        alt="logo"
+        className="transition-transform transform duration-500 w-[150px] h-[110px] p-6 absolute z-[1000]"
+        variants={containerVariants}
+        initial="hidden"
+        animate={isOpen ? 'visible' : 'hidden'}
+      /> */}
+      <div
+        onClick={handleMenu}
+        className="absolute z-[200] m-4 top-0 right-0 md:hidden lg:hidden p-2 bg-font-blue w-10 h-10 flex justify-center items-center rounded-full text-white cursor-pointer shadow-md"
+      >
+        {isOpen ? <RxCross2 /> : <RxHamburgerMenu />}
       </div>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="fixed  md:hidden lg:hidden  inset-0 z-[100] bg-[#F4EBDC] justify-center items-start pl-6 text-font-blue inter font-[700] text-[20px] flex flex-col gap-[32px]"
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            variants={containerVariants}
+          >
+          <img
+        src="/logo.png"
+        alt="logo"
+        className=" top-0 left-0  transition-transform transform duration-500 w-[150px] h-[110px] p-6 absolute z-[1000]"
+        
+      />
+            <motion.div variants={linkVariants}>
+              <Link to="/">Home</Link>
+            </motion.div>
+            <motion.div variants={linkVariants}>
+              <Link to="/">Menu</Link>
+            </motion.div>
+            <motion.div variants={linkVariants}>
+              <Link to="/">Blog</Link>
+            </motion.div>
+            <motion.div variants={linkVariants}>
+              <Link to="/">Faqs</Link>
+            </motion.div>
+            <motion.div variants={linkVariants}>
+              <Link to="/">About us</Link>
+            </motion.div>
+            <motion.div variants={linkVariants}>
+              <Link to="/contact">Contact us</Link>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
 
         <motion.div
           animate={{
