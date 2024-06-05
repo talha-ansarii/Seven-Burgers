@@ -6,6 +6,7 @@ import { FaPhoneVolume, FaLocationDot } from "react-icons/fa6";
 import { TiTick } from "react-icons/ti";
 import Footer from "../components/Footer";
 import Whatsapp from "../components/Whatsapp";
+import DashboardCard from "../components/BLogCard";
 
 const Contact = () => {
   const [name, setName] = useState("");
