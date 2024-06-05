@@ -35,9 +35,9 @@ const Footer = () => {
           <div className="inter font-[600] text-[16px] leading-[26px]">
             Company
           </div>
-          <a className="inter font-[400] text-[12px] leading-[18px]">About</a>
-          <a className="inter font-[400] text-[12px] leading-[18px]">Contact</a>
-          <a className="inter font-[400] text-[12px] leading-[18px]">Blogs</a>
+          <Link className="inter font-[400] text-[12px] leading-[18px]">About</Link>
+          <Link to={"/contact"} className="inter font-[400] text-[12px] leading-[18px]">Contact</Link>
+          <Link className="inter font-[400] text-[12px] leading-[18px]">Blogs</Link>
         </div>
         <div className="flex flex-col gap-2  ">
           <div className="inter font-[600] text-[16px] leading-[26px]">
