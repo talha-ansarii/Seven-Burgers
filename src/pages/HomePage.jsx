@@ -8,6 +8,7 @@ import Hero from "../components/Hero";
 import Intro from "../components/Intro";
 import Testimonials from "../components/Testimonials";
 import GrillGang from "../components/GrillGang";
+import Whatsapp from "../components/Whatsapp";
 
 
 const HomePage = () => {
@@ -30,6 +31,7 @@ const HomePage = () => {
 
   return (
     <div className="">
+    <Whatsapp/>
     {/* {show && <Intro />} */}
 
       <Hero />

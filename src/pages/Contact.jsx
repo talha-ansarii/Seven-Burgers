@@ -5,6 +5,7 @@ import { FaInstagram, FaFacebookF, FaYoutube, FaEnvelope } from "react-icons/fa"
 import { FaPhoneVolume, FaLocationDot } from "react-icons/fa6";
 import { TiTick } from "react-icons/ti";
 import Footer from "../components/Footer";
+import Whatsapp from "../components/Whatsapp";
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -49,6 +50,7 @@ const Contact = () => {
 
   return (
     <div className="bg-[#F4EBDC] min-h-[100vh] md:p-12 lg:p-12 px-6 pt-12 pb-12">
+    <Whatsapp/>
       <Navbar />
       <div className="pt-[89.98px] h-[100%]">
         <div className="w-full flex justify-center items-center flex-col">

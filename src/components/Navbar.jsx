@@ -8,7 +8,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolling, setScrolling] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  console.log(windowWidth)
+  // console.log(windowWidth)
 
   const variants = {
     hidden: { opacity: 0, y: -20 },
@@ -101,12 +101,15 @@ const Navbar = () => {
             exit="hidden"
             variants={containerVariants}
           >
+          <Link to={"/"}>
+
           <img
         src="/logo.png"
         alt="logo"
         className=" top-0 left-0  transition-transform transform duration-500 w-[150px] h-[110px] p-6 absolute z-[1000]"
         
       />
+          </Link>
             <motion.div variants={linkVariants}>
               <Link to="/">Home</Link>
             </motion.div>
@@ -117,7 +120,7 @@ const Navbar = () => {
               <Link to="/">Blog</Link>
             </motion.div>
             <motion.div variants={linkVariants}>
-              <Link to="/">Faqs</Link>
+              <Link to="/faq">Faqs</Link>
             </motion.div>
             <motion.div variants={linkVariants}>
               <Link to="/">About us</Link>
@@ -164,6 +167,8 @@ const Navbar = () => {
             }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
           >
+          <Link to={"/"}>
+
             <img
               src="/logo.png"
               alt="logo"
@@ -171,6 +176,7 @@ const Navbar = () => {
                 !scrolling ? " h-[50px] w-[80px]" : " w-[150px] h-[104px] p-4"
               }`}
             />
+          </Link>
           </motion.div>
           <div className="md:text-md flex gap-[32px]">
             <motion.div
@@ -191,7 +197,7 @@ const Navbar = () => {
               transition={{ duration: 0.7, ease: "easeInOut" }}
               className="flex gap-[32px] md:text-[13px] lg:text-[16px] font-migra leading-[19.36px] text-[#233780]"
             >
-              <Link to="/">Faqs</Link>
+              <Link to="/faq">Faqs</Link>
               <Link to="/">About us</Link>
               <Link to="/contact">Contact us</Link>
             </motion.div>
