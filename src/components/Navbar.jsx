@@ -8,6 +8,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolling, setScrolling] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  console.log(windowWidth)
 
   const variants = {
     hidden: { opacity: 0, y: -20 },
@@ -134,11 +135,11 @@ const Navbar = () => {
             
             alignItems: `${!scrolling ? "center" : ""}`,
             top: `${!scrolling ? "0" : "66px"}`,
-            left: `${!scrolling ? "0" : `calc(${0.10 * windowWidth}px)`}`,
+            left: `${!scrolling ? "0" : `${windowWidth > 768 ? `calc(${0.10 * windowWidth}px)` : `calc(${0.05 * windowWidth}px)`}`}`,
             // transform: `${!scrolling ? "none" : "translateX(-50%)"}`,
             backgroundColor: `${!scrolling ? "#FED676" : "white"}`,
             borderRadius: `${!scrolling ? "none" : "50px"}`,
-            width: `${!scrolling ? "100%" : "80%"}`,
+            width: `${!scrolling ? "100%" : `${ windowWidth > 768 ? "80%" : "90%" }` }`,
             height: `${!scrolling ? "80.89px" : "62px"}`,
             margin: `${!scrolling ? "0" : "0px"}`,
           }}
@@ -151,7 +152,7 @@ const Navbar = () => {
         >
           <motion.div
             animate={{
-              x: `${!scrolling ? 0 : "230px"}`,
+              x: `${!scrolling ? 0 : `${windowWidth > 768 ? "230px" : "210px"}`}`,
               width: `${!scrolling ? "120px" : "150px"}`,
               height: `${!scrolling ? "82.89px" : "150px"}`,
               borderRadius: `${!scrolling ? "32px" : "50%"}`,
@@ -174,10 +175,10 @@ const Navbar = () => {
           <div className="md:text-md flex gap-[32px]">
             <motion.div
               animate={{
-                x: `${!scrolling ? 0 : "-85%"}`,
+                x: `${!scrolling ? 0 : `${windowWidth > 768 ? "-85%" : "-70% " }`}`, 
               }}
               transition={{ duration: 0.7, ease: "easeInOut" }}
-              className="flex gap-[32px] text-[16px] font-migra leading-[19.36px] text-[#233780] "
+              className="flex gap-[32px] md:text-[13px] lg:text-[16px] font-migra leading-[19.36px] text-[#233780] "
             >
               <Link to="/">Home</Link>
               <Link to="/">Menu</Link>
@@ -185,10 +186,10 @@ const Navbar = () => {
             </motion.div>
             <motion.div
               animate={{
-                x: `${!scrolling ? 0 : "30%"}`,
+                x: `${!scrolling ? 0 : `${windowWidth > 768 ? "30%" : "20%"}`}`,
               }}
               transition={{ duration: 0.7, ease: "easeInOut" }}
-              className="flex gap-[32px] text-[16px] font-migra leading-[19.36px] text-[#233780]"
+              className="flex gap-[32px] md:text-[13px] lg:text-[16px] font-migra leading-[19.36px] text-[#233780]"
             >
               <Link to="/">Faqs</Link>
               <Link to="/">About us</Link>
