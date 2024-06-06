@@ -32,7 +32,7 @@ const SevenSecrets = () => {
 
         </div>
 
-        <div className="absolute top-1/2 translate-y-[-50%] text-[50px] p-2 md:text-[105px] lg:text-[105px] text-center  w-full z-30  font-migra text-font-blue">Gourmet Burger At Your Doorstep</div>
+        <div className="absolute top-1/2 translate-y-[-50%] text-[50px] p-2 md:text-[105px] lg:text-[105px] text-center lg:leading-[109px] md:leading-[109px] leading-[55px]  w-full z-30  font-migra text-font-blue">Gourmet Burger At Your Doorstep</div>
 
         </div>
       </div>
