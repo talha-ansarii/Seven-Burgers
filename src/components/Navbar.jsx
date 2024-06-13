@@ -111,22 +111,26 @@ const Navbar = () => {
       />
           </Link>
             <motion.div variants={linkVariants}>
-              <Link to="/">Home</Link>
+              <Link className="flex gap-3" to="/">
+                <img src="/navbar/menu.svg"/>
+              Home</Link>
             </motion.div>
             <motion.div variants={linkVariants}>
-              <Link to="/">Menu</Link>
+              <Link className="flex gap-3" to="/">
+              <img src="/navbar/menu.svg"/>
+              Menu</Link>
             </motion.div>
             <motion.div variants={linkVariants}>
-              <Link to="/">Blog</Link>
+              <Link className="flex gap-3" to="/"><img src="/navbar/blog.svg"/>Blog</Link>
             </motion.div>
             <motion.div variants={linkVariants}>
-              <Link to="/faq">Faqs</Link>
+              <Link className="flex gap-3" to="/faq"><img src="/navbar/faq.svg"/>Faqs</Link>
             </motion.div>
             <motion.div variants={linkVariants}>
-              <Link to="/story">Our story</Link>
+              <Link className="flex gap-3" to="/story"><img src="/navbar/gem.svg"/>Our story</Link>
             </motion.div>
             <motion.div variants={linkVariants}>
-              <Link to="/contact">Contact us</Link>
+              <Link className="flex gap-3" to="/contact"><img src="/navbar/hedset.svg"/>Contact us</Link>
             </motion.div>
           </motion.div>
         )}
