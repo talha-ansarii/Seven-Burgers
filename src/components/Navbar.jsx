@@ -123,7 +123,7 @@ const Navbar = () => {
               <Link to="/faq">Faqs</Link>
             </motion.div>
             <motion.div variants={linkVariants}>
-              <Link to="/">About us</Link>
+              <Link to="/story">Our story</Link>
             </motion.div>
             <motion.div variants={linkVariants}>
               <Link to="/contact">Contact us</Link>
@@ -198,7 +198,7 @@ const Navbar = () => {
               className="flex gap-[32px] md:text-[13px] lg:text-[16px] font-migra leading-[19.36px] text-[#233780]"
             >
               <Link to="/faq">Faqs</Link>
-              <Link to="/">About us</Link>
+              <Link to="/story">Our Story</Link>
               <Link to="/contact">Contact us</Link>
             </motion.div>
           </div>
