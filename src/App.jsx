@@ -8,6 +8,7 @@ import Test from "./pages/Test";
 import OurStory from "./pages/OurStory";
 import Login from "./pages/Login";
 import BlogList from "./pages/blog/BlogList";
+import PastBlogs from "./pages/blog/PastBlogs";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/story" element={<OurStory />} />
         <Route path="/login" element={<Login />} />
         <Route path="/blogs" element={<BlogList />} />
+        <Route path="/blogs/pastblogs" element={<PastBlogs />} />
       </Routes>
     </div>
   );
