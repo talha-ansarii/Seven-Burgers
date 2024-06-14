@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const LongBlogCard = () => {
+    const navigate = useNavigate();
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState('Sort By');
   
@@ -9,8 +11,10 @@ const LongBlogCard = () => {
     };
   
     const handleOptionClick = (option) => {
-      setSelectedOption(option);
-      setIsDropdownOpen(false);
+      if (option === "edit") {
+        navigate("/blogs/writeblog");
+      }
+        
     };
   return (
     <div className="flex ">
@@ -33,13 +37,13 @@ const LongBlogCard = () => {
           <div className="absolute left-0 top-10 mt-2 bg-[#1F4386] text-white rounded-lg shadow-lg z-10">
             <ul className="py-1">
               <li
-                onClick={() => handleOptionClick('Option 1')}
+                onClick={() => handleOptionClick('edit')}
                 className="cursor-pointer px-4 inter py-2 hover:bg-blue-200 hover:text-[#233780]"
               >
                 Edit
               </li>
               <li
-                onClick={() => handleOptionClick('Option 2')}
+                onClick={() => handleOptionClick("delete")}
                 className="cursor-pointer px-4 py-2 inter hover:bg-blue-200 hover:text-[#233780]"
               >
                 Delete
