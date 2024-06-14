@@ -37,8 +37,12 @@
   .our-story-shadow{
     box-shadow: 20px 17px 13.1px 0px #00000040;
 
-  }
 
+  }
+.blog-shadow{
+  box-shadow: 7px 1px 4px 0px #00000040;
+
+}
 
 
   @tailwind base;
