@@ -6,6 +6,8 @@ import Contact from "./pages/Contact";
 import Faq from "./pages/Faq";
 import Test from "./pages/Test";
 import OurStory from "./pages/OurStory";
+import Login from "./pages/Login";
+import BlogList from "./pages/blog/BlogList";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
         <Route path="/faq" element={<Faq />} />
         <Route path="/test" element={<Test />} />
         <Route path="/story" element={<OurStory />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/blogs" element={<BlogList />} />
       </Routes>
     </div>
   );

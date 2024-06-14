@@ -5,10 +5,12 @@ import Essence from '../components/Essence'
 import Exclusivity from '../components/Exclusivity'
 import LastSec from '../components/LastSec'
 import Footer from '../components/Footer'
+import Whatsapp from '../components/Whatsapp'
 
 const OurStory = () => {
   return (
     <div className='bg-[#FED676] w-full '>
+    <Whatsapp/>
         <Navbar/>
         <div className='relative mx-auto pt-20 md:pt-[150px] lg:pt-[150px] ove'>
         <div className=' bg-[#FED676] h-[260px] md:h-[400px] lg:h-[400px]'>
