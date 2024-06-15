@@ -35,11 +35,15 @@ const WriteBlog = () => {
     
   return (
     <div className='bg-[#F4EBDC]'>
-        <div className='w-[80%] p-8'>
+        <div className='w-[100%] p-8 flex justify-between mx-auto'>
         <div className='flex justify-start items-center gap-x-2'>
               <img className='w-[100px] h-[60px] ' src='/logo.png'/>
               <div className='  text-[30px]  text-[#233780] inter font-[600]'>Seven Burgers</div>
             </div>
+            <button className="flex md:w-[174px] lg:w-[174px] w-[100px] bg-font-blue text-white font-migra text-[10px] md:text-[20px] lg:text-[20px] leading-[24.2px] font-[800] md:py-[16px] px-[10px] py-[5px] md:px-[28px] lg:py-[16px] lg:px-[28px] rounded-[34px] ml-10 justify-center items-center gap-1 hover:shadow-none transition-all ease-out duration-300 shadow-order-button">
+              <div>Publish</div>
+              <img src="/arrow.svg" alt="arrow" />
+            </button>
         </div>
         <div className='w-[80%] m-auto mb-9'>
         <div className='text-[25px] pt-[25px] md:pt-0 lg:pt-0 md:text-[30px] lg:text-[30px] text-[#233780] inter font-[600] '>Title</div>
