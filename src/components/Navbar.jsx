@@ -121,7 +121,7 @@ const Navbar = () => {
               Menu</Link>
             </motion.div>
             <motion.div variants={linkVariants}>
-              <Link className="flex gap-3" to="/"><img src="/navbar/blog.svg"/>Blog</Link>
+              <Link className="flex gap-3" to="/blogs"><img src="/navbar/blog.svg"/>Blog</Link>
             </motion.div>
             <motion.div variants={linkVariants}>
               <Link className="flex gap-3" to="/faq"><img src="/navbar/faq.svg"/>Faqs</Link>
@@ -192,7 +192,7 @@ const Navbar = () => {
             >
               <Link to="/">Home</Link>
               <Link to="/">Menu</Link>
-              <Link to="/">Blog</Link>
+              <Link to="/blogs">Blog</Link>
             </motion.div>
             <motion.div
               animate={{
