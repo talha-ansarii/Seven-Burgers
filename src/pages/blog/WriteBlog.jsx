@@ -7,13 +7,16 @@ const WriteBlog = () => {
     const [text1, setText1] = useState('');
     const [text2, setText2] = useState('');
     const [text3, setText3] = useState('');
+    const [text4, setText4] = useState('');
     const [noImg1 , setNoImg1] = useState("noImg1")
     const [noImg2 , setNoImg2] = useState("noImg2")
     const [noImg3 , setNoImg3] = useState("noImg3")
+    const [noImg4 , setNoImg4] = useState("noImg4")
   
     const [image1, setImage1] = useState();
     const [image2, setImage2] = useState();
     const [image3, setImage3] = useState();
+    const [image4, setImage4] = useState();
 
 
 
@@ -31,6 +34,11 @@ const WriteBlog = () => {
         // console.log(e.target.files);
         setImage3(URL.createObjectURL(e.target.files[0]));
           setNoImg3("img")
+    }
+    function handleChange4(e) {
+        // console.log(e.target.files);
+        setImage4(URL.createObjectURL(e.target.files[0]));
+          setNoImg4("img")
     }
     
   return (
@@ -210,6 +218,65 @@ const WriteBlog = () => {
                     onClick={() => {
                       setNoImg3("noImg3");
                       setImage3(null);
+                    }}
+                  >
+                    X
+                  </div>
+                </div>
+              ) : null}
+              </div>
+        </div>
+        <br/>
+        <div className='w-[80%] m-auto'>
+        <div className='text-[25px] pt-[25px] md:pt-0 lg:pt-0 md:text-[30px] lg:text-[30px] text-[#233780] inter font-[600] '>Text</div>
+          <div className='bg-white m-4 h-[200px]'>
+
+        <ReactQuill className='bg-white  h-[159px]'  theme="snow" value={text3} onChange={setText3} />
+          </div>
+
+        <div>
+                <label
+                  htmlFor="image4"
+                  className="w-max flex items-center gap-2 "
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    x="0px"
+                    y="0px"
+                    width={38}
+                    height={38}
+                    viewBox="0 0 24 24"
+                    className="cursor-pointer fill-current text-gray-500 "
+                  >
+                    <path d="M 6 2 C 4.9057453 2 4 2.9057453 4 4 L 4 20 C 4 21.094255 4.9057453 22 6 22 L 18 22 C 19.094255 22 20 21.094255 20 20 L 20 8 L 14 2 L 6 2 z M 6 4 L 13 4 L 13 9 L 18 9 L 18 20 L 6 20 L 6 4 z M 13.5 13.333984 L 11 16.667969 L 9.5 14.667969 L 7 18 L 17 18 L 13.5 13.333984 z" />
+                  </svg>
+                  <div className="cursor-pointer text-gray-500">Click to Add Image</div>
+                </label>
+                <input
+                name="image1"
+                className="hidden w-max"
+                id="image4"
+                type="file"
+                accept="image/*"
+                onChange={handleChange4}
+
+              />
+              {noImg3 !== "noImg3" ? (
+                <div className=" w-max relative mb-4 mt-3">
+                  <img
+                    src={image3}
+                    alt="pic"
+                    className="w-[300px]"
+                    
+                    
+                  />
+
+
+                  <div
+                    className="absolute top-0 text-gray-900 hover:text-gray-500 cursor-pointer text-4xl duration-300 ease-in-out right-3 "
+                    onClick={() => {
+                      setNoImg4("noImg3");
+                      setImage4(null);
                     }}
                   >
                     X
