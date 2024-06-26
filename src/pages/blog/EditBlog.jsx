@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import { useParams } from "react-router";
+import React, { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
+import { DeleteObjectCommand, PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { stringify, parse } from "flatted";
+import { set } from "lodash";
 
-const WriteBlog = () => {
+const EditBlog = () => {
   const [text1, setText1] = useState("");
   const [text2, setText2] = useState("");
   const [text3, setText3] = useState("");
@@ -32,6 +33,73 @@ const WriteBlog = () => {
 
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { id } = useParams();
+
+
+  const REGION = "ap-south-1";
+  const ACCESS_KEY_ID = "";
+  const SECRET_ACCESS_KEY = "";
+
+  const s3Client = new S3Client({
+    region: REGION,
+    credentials: {
+      accessKeyId: ACCESS_KEY_ID,
+      secretAccessKey: SECRET_ACCESS_KEY,
+    },
+  });
+
+  // console.log(id)
+
+  useEffect(() => {
+    const fetchBlog = async () => {
+      try {
+        const response = await axios.get(
+          `http://127.0.0.1:8787/api/v1/blog/${id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
+        console.log(response.data.blog);
+        setText1(response.data.blog.title);
+        setText2(response.data.blog.content[0]);
+        setText3(response.data.blog.content[1]);
+        setText4(response.data.blog.content[2]);
+
+
+       
+
+        
+        response.data.blog.images.forEach(image => {
+          // console.log(image)
+          if (image.includes('image1')) {
+              setImage1(image);
+          } else if (image.includes('image2')) {
+              setImage2(image);
+          }
+          else if (image.includes('image3')) {
+              setImage3(image);
+          }
+          else if (image.includes('image4')) {
+              setImage4(image);
+          }
+      });
+
+        setImgUrls(response.data.blog.images);
+
+
+        setNoImg1("img");
+        setNoImg2("img");
+        setNoImg3("img");
+        setNoImg4("img");
+        setFolderName(response.data.blog.blogNo);
+      } catch (error) {
+        console.error("Error fetching blogs:", error);
+      }
+    };
+    fetchBlog();
+  }, []);
 
   function handleChange1(e) {
     console.log(e.target.files[0]);
@@ -65,17 +133,7 @@ const WriteBlog = () => {
     // console.log(folderName);
     // S3 Configuration
 
-    const REGION = "ap-south-1";
-    const ACCESS_KEY_ID = "";
-    const SECRET_ACCESS_KEY = "";
-
-    const s3Client = new S3Client({
-      region: REGION,
-      credentials: {
-        accessKeyId: ACCESS_KEY_ID,
-        secretAccessKey: SECRET_ACCESS_KEY,
-      },
-    });
+   
 
     const BUCKET_NAME = "sevenburgers";
     const params = {
@@ -86,11 +144,11 @@ const WriteBlog = () => {
 
     try {
       const command = new PutObjectCommand(params);
-      const dataa = await s3Client.send(command);
+      const data = await s3Client.send(command);
 
       // Construct file URL
       const fileURL = `https://${BUCKET_NAME}.s3.${REGION}.amazonaws.com/${folderName}/${imgName}`;
-      console.log("File uploaded successfully.", dataa);
+      console.log("File uploaded successfully.", data);
       console.log("File URL:", fileURL);
       // alert(`File uploaded successfully. File URL: ${fileURL}`);
 
@@ -104,98 +162,99 @@ const WriteBlog = () => {
   const handleFolderName = (e) => {
     setFolderName(e.target.value);
   };
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
     setLoading(true);
-  
-    console.log("in submit block");
     if (!folderName) {
       alert("Please enter a blog number");
-      setLoading(false);
       return;
     }
-  
-    let imgUrls = [];
-    let content = [];
-  
+    let img1url, img2url, img3url, img4url;
+    if (file1) {
+      img1url = await uploadFile(file1, "image1");
+      imgUrls.push(img1url);
+    }
+    if (file2) {
+      img2url = await uploadFile(file2, "image2");
+      imgUrls.push(img2url);
+    }
+    if (file3) {
+      img3url = await uploadFile(file3, "image3");
+      imgUrls.push(img3url);
+    }
+    if (file4) {
+      img4url = await uploadFile(file4, "image4");
+      imgUrls.push(img4url);
+    }
+    console.log(imgUrls);
+
+    if (text2) content.push(text2);
+    if (text3) content.push(text3);
+    if (text4) content.push(text4);
+
+    const url = `http://127.0.0.1:8787/api/v1/blog`;
+    const token = localStorage.getItem("token");
+
+    const data = {
+      id: parseInt(id),
+      title: text1,
+      content: content,
+      images: imgUrls,
+    };
+
     try {
-      if (file1) {
-        const img1url = await uploadFile(file1, "image1");
-        imgUrls.push(img1url);
-      }
-      if (file2) {
-        const img2url = await uploadFile(file2, "image2");
-        imgUrls.push(img2url);
-      }
-      if (file3) {
-        const img3url = await uploadFile(file3, "image3");
-        imgUrls.push(img3url);
-      }
-      if (file4) {
-        const img4url = await uploadFile(file4, "image4");
-        imgUrls.push(img4url);
-      }
-      console.log(imgUrls);
-  
-      if (text2) content.push(text2);
-      if (text3) content.push(text3);
-      if (text4) content.push(text4);
-  
-      const url = "http://127.0.0.1:8787/api/v1/blog";
-      const token = localStorage.getItem("token");
-  
-      const data = {
-        title: text1,
-        content: content,
-        images: imgUrls, 
-        blogNo: parseInt(folderName)
-      };
-      console.log(text1)
-      console.log(content)
-      console.log(imgUrls)
-      console.log(folderName)
-      // console.log(data)
-
-
-      
-  
-      console.log("in try block");
-  
       const response = await fetch(url, {
-        method: 'POST',
+        method: "PUT",
         headers: {
-          'Authorization': `Bearer ${token}`
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
       });
-      
-      const responseData = await response.json();
-      
-      
 
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const responseData = await response.json();
       setContent([]);
       setImgUrls([]);
       setLoading(false);
       navigate("/blogs/" + responseData.id);
-  
+
       console.log("Response:", responseData);
-
-
     } catch (error) {
-      console.log(error);
-      setLoading(false);
+      console.error("Error:", error.message);
     }
   };
-  
+
+  const deleteImage = async (bucketName, folderPath, imageName) => {
+    const params = {
+      Bucket: bucketName,
+      Key: `${folderPath}/${imageName}`,
+    };
+
+    try {
+      const command = new DeleteObjectCommand(params);
+      const data = await s3Client.send(command);
+      console.log(data)
+      console.log(
+        `${imageName} has been deleted from ${bucketName}/${folderPath}`
+      );
+    } catch (error) {
+      console.log(`Error deleting ${imageName}:`, error);
+    }
+  };
 
   return (
     <div className="bg-[#F4EBDC]">
       <div className="w-[100%] p-8 flex justify-between mx-auto">
         <div className="flex justify-start items-center gap-x-2">
-          <img className="md:w-[100px] md:h-[60px] lg:w-[100px] lg:h-[60px] w-[50px] h-[30px] " src="/logo.png" />
+          <img
+            className="md:w-[100px] md:h-[60px] lg:w-[100px] lg:h-[60px] w-[50px] h-[30px] "
+            src="/logo.png"
+          />
           <div className=" text-[15px]  md:text-[30px] lg:text-[30px]  text-[#233780] inter font-[600]">
             Seven Burgers
           </div>
@@ -204,11 +263,11 @@ const WriteBlog = () => {
       <form>
         <button
           onClick={handleSubmit}
-          // disabled={loading}
+          disabled={loading}
           type="submit"
           className="flex absolute top-10 right-10 md:w-[174px] lg:w-[174px] w-[100px] bg-font-blue text-white font-migra text-[10px] md:text-[20px] lg:text-[20px] leading-[24.2px] font-[800] md:py-[16px] px-[10px] py-[5px] md:px-[28px] lg:py-[16px] lg:px-[28px] rounded-[34px] ml-10 justify-center items-center gap-1 hover:shadow-none transition-all ease-out duration-300 shadow-order-button"
         >
-          <div>Publish</div>
+          <div>Update</div>
           <img src="/arrow.svg" alt="arrow" />
         </button>
 
@@ -227,14 +286,13 @@ const WriteBlog = () => {
             </div>
           </div>
 
-          <div className="bg-white m-4 h-[90px]">
-            <ReactQuill
-              className="bg-white  h-[49px]"
-              theme="snow"
-              value={text1}
-              onChange={setText1}
-            />
-          </div>
+          <ReactQuill
+            className="bg-white rounded-md shadow-lg m-4"
+            defaultValue="Title"
+            theme="snow"
+            value={text1}
+            onChange={setText1}
+          />
           <div>
             <label htmlFor="image1" className="w-max flex items-center gap-2 ">
               <svg
@@ -260,7 +318,7 @@ const WriteBlog = () => {
               accept="image/*"
               onChange={handleChange1}
             />
-            {noImg1 !== "noImg1" ? (
+            {image1 && noImg1 !== "noImg1" ? (
               <div className=" w-max relative mb-4 mt-3">
                 <img src={image1} alt="pic" className="w-[300px]" />
 
@@ -269,6 +327,8 @@ const WriteBlog = () => {
                   onClick={() => {
                     setNoImg1("noImg1");
                     setImage1(null);
+                    setFile1("noImg1");
+                    deleteImage("sevenburgers", folderName, "image1");
                   }}
                 >
                   X
@@ -317,7 +377,7 @@ const WriteBlog = () => {
               accept="image/*"
               onChange={handleChange2}
             />
-            {noImg2 !== "noImg2" ? (
+            {image2 && noImg2 !== "noImg2" ? (
               <div className=" w-max relative mb-4 mt-3">
                 <img src={image2} alt="pic" className="w-[300px]" />
 
@@ -326,6 +386,8 @@ const WriteBlog = () => {
                   onClick={() => {
                     setNoImg2("noImg2");
                     setImage2(null);
+                    setFile2("noImg2");
+                    deleteImage("sevenburgers", folderName, "image2");
                   }}
                 >
                   X
@@ -373,7 +435,7 @@ const WriteBlog = () => {
               accept="image/*"
               onChange={handleChange3}
             />
-            {noImg3 !== "noImg3" ? (
+            {image3 && noImg3 !== "noImg3" ? (
               <div className=" w-max relative mb-4 mt-3">
                 <img src={image3} alt="pic" className="w-[300px]" />
 
@@ -382,6 +444,8 @@ const WriteBlog = () => {
                   onClick={() => {
                     setNoImg3("noImg3");
                     setImage3(null);
+                    setFile3("noImg3");
+                    deleteImage("sevenburgers", folderName, "image3");
                   }}
                 >
                   X
@@ -429,7 +493,7 @@ const WriteBlog = () => {
               accept="image/*"
               onChange={handleChange4}
             />
-            {noImg4 !== "noImg4" ? (
+            {image4 && noImg4 !== "noImg4" ? (
               <div className=" w-max relative mb-4 mt-3">
                 <img src={image4} alt="pic" className="w-[300px]" />
 
@@ -438,6 +502,8 @@ const WriteBlog = () => {
                   onClick={() => {
                     setNoImg4("noImg4");
                     setImage4(null);
+                    setFile4("noImg4");
+                    deleteImage("sevenburgers", folderName, "image4");
                   }}
                 >
                   X
@@ -452,4 +518,4 @@ const WriteBlog = () => {
   );
 };
 
-export default WriteBlog;
+export default EditBlog;

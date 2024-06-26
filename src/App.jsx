@@ -10,6 +10,8 @@ import Login from "./pages/Login";
 import BlogList from "./pages/blog/BlogList";
 import PastBlogs from "./pages/blog/PastBlogs";
 import WriteBlog from "./pages/blog/WriteBlog";
+import Blog from "./pages/blog/Blog";
+import EditBlog from "./pages/blog/EditBlog";
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
         <Route path="/blogs" element={<BlogList />} />
         <Route path="/blogs/pastblogs" element={<PastBlogs />} />
         <Route path="/blogs/writeblog" element={<WriteBlog />} />
+        <Route path="/blogs/:id" element={<Blog />} />
+        <Route path="/blogs/editblog/:id" element={<EditBlog />} />
       </Routes>
     </div>
   );
