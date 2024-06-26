@@ -11,7 +11,7 @@ const BlogCard = ({blog}) => {
     <div className="max-w-sm rounded-lg overflow-hidden cursor-pointer p-4">
             <div className=''>
 
-      <img className="w-[325px] md:w-[218px] lg:w-[322px]  h-[198px] md:h-[153px] lg:[226px] rounded-t-[21px] object-cover" src={blog.images[0]} alt="Burger" />
+      <img className="w-[325px] md:w-[218px] lg:w-[322px]  h-[120px] md:h-[153px] lg:h-[226px] rounded-t-[21px] object-cover" src={blog.images[0]} alt="Burger" />
             </div>
       <div className="pt-4">
         <h2 className="text-2xl inter font-[600] text-[#1F4386]"><p dangerouslySetInnerHTML={{ __html: blog.title }}></p> </h2>

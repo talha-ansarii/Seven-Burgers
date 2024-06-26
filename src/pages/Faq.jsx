@@ -146,12 +146,12 @@ const Faq = () => {
     <div className="bg-[#F4EBDC]">
     <Whatsapp/>
       <Navbar />
-      <div className="w-[90%] mx-auto relative flex lg:flex-row flex-col lg:mt-10">
+      <div className="w-[90%] mx-auto relative flex lg:flex-row flex-col lg:pt-10">
         <div className="lg:w-[40%] lg:pt-20 flex justify-center items-center m-auto">
-          <img src="/faq.png" alt="faq" className={` md:mt-20 transition-all ease-out duration-400  w-full lg:w-[40%] lg:fixed lg:translate-y-[-50%] ${scrolling > 1228 ? " top-[20%] " : " top-[50%] " }`} />
+          <img src="/faq.png" alt="faq" className={` md:mt-20 transition-all ease-linear duration-400  w-full lg:w-[40%] lg:fixed lg:translate-y-[-50%] ${scrolling > 900 ? " top-[20%] " : " top-[50%] " }`} />
         </div>
         <div className="lg:w-[55%]">
-          <div className="inter lg:mt-16 lg:text-left font-[700] text-[24px] leading-[28.8px] text-black text-center">
+          <div className="inter lg:mt-16 pt-4 lg:text-left font-[700] text-[24px] leading-[28.8px] text-black text-center">
             Frequently Asked Questions
           </div>
           <div className="faqs w-full max-w-xl mx-auto  p-1 ">

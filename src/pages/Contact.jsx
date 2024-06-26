@@ -78,19 +78,19 @@ const Contact = () => {
               <div className="flex flex-col gap-12 text-white">
                 <div className="flex flex-col md:flex-row lg:flex-row gap-2 justify-start items-center">
                   <FaPhoneVolume className="w-[17px] h-[17px]" />
-                  <div className="inter font-[400] text-[12px] leading-[18px]">
+                  <div className="inter font-[400] text-[15px] leading-[18px]">
                     +1012 3456 789
                   </div>
                 </div>
                 <div className="flex gap-2 flex-col md:flex-row lg:flex-row justify-start items-center">
                   <FaEnvelope className="w-[17px] h-[17px]" />
-                  <a className="inter font-[400] text-[12px] leading-[18px]">
+                  <a className="inter font-[400] text-[15px] leading-[18px]">
                     demo@gmail.com
                   </a>
                 </div>
                 <div className="flex gap-2 flex-col md:flex-row lg:flex-row justify-normal items-center">
                   <FaLocationDot className="w-[17px] h-[17px]" />
-                  <div className="inter font-[400] text-[12px] leading-[18px]">
+                  <div className="inter font-[400] text-[15px] leading-[18px]">
                     132 Dartmouth Street Boston, Massachusetts 02156 United
                     States
                   </div>

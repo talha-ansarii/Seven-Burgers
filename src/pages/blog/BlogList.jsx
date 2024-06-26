@@ -48,19 +48,19 @@ const BlogList = () => {
   return (
     <div>
       <Navbar />
-      <div className='relative  md:pt-[200px] lg:pt-24 bg-[#FED676] h-[700px] lg:h-[900px] md:h-[900px] p-8 flex flex-col justify-start items-center'>
-        <div className='mt-[150px] font-migra font-[800] w-[200px] text-center text-[70px] text-[#FED676] bg-[#1F4386] rounded-[70px]'>
+      <div className='relative  md:pt-[200px] lg:pt-24 bg-[#FED676] h-[700px] lg:h-[1000px] md:h-[800px] p-8 flex flex-col justify-start items-center'>
+        <div className='mt-[150px] md:pt-2 pt-0 lg:pt-0 font-migra w-[105px] h-[49px] text-[32px] font-[800] lg:w-[355px] lg:h-[163px] md:w-[192px] md:h-[88px] text-center lg:text-[96px] text-[#FED676] bg-[#1F4386] rounded-[92px] md:text-[48px]'>
           Blog
         </div>
         <div className='flex lg:flex-row md:flex-row flex-col mt-[50px]'>
-          <img src={latestBlog?.images[0]} className='z-10 w-[300px] md:w-[500px] md:h-[300px] lg:w-[650px] lg:h-[400px] object-cover rounded-[20px] md:rounded-[40px] lg:rounded-[40px]' />
-          <div className='flex flex-col justify-around items-start bg-[#F6EDDF] pl-4 pb-4 lg:pl-[100px] md:pl-[100px] md:ml-[-90px] lg:ml-[-90px] z-0 w-[300px] lg:w-[400px] md:w-[400px] blog-shadow lg:rounded-[40px] rounded-b-[20px] md:rounded-[40px] mt-[-20px] md:mt-[0px] lg:mt-[0px]'>
-            <div className='text-[25px] pt-[25px] md:pt-0 lg:pt-0 md:text-[30px] lg:text-[30px] text-[#233780] inter font-[600]'>
+          <img src={latestBlog?.images[0]} className='z-10 w-[326px] h-[176px] md:w-[417px] md:h-[251px] lg:w-[818px] lg:h-[471px] object-cover rounded-[20px] md:rounded-[40px] lg:rounded-[40px]' />
+          <div className='flex flex-col justify-around md:w-[360px] items-start bg-[#F6EDDF] pl-4 pb-4 lg:pl-[100px] md:pl-[100px] md:ml-[-90px] lg:ml-[-90px] z-0 w-[326px] h-[128px] p-2 lg:w-[477px] lg:h-[471px] md:h-[251px] blog-shadow lg:rounded-[40px] rounded-b-[20px] md:rounded-[40px] mt-[-20px] md:mt-[0px] lg:mt-[0px]'>
+            <div className='text-[24px] pt-[18px] md:pt-0 lg:pt-0 md:text-[30px] lg:text-[30px] text-[#233780] inter font-[600]'>
               <div dangerouslySetInnerHTML={{ __html: latestBlog?.title }}></div>
             </div>
             <div className='flex justify-center items-center gap-2'>
               <img className='w-[20px] h-[15px] md:w-[30px] lg:w-[30px] lg:h-[20px] md:h-[20px]' src='/logo.png' />
-              <div className='md:text-[12px] lg:text-[12px] text-[10px] text-[#233780] inter font-[600]'>{formattedDate}</div>
+              <div className='md:text-[12px] lg:text-[12px] text-[11px] text-[#233780] inter font-[600]'>{formattedDate}</div>
             </div>
           </div>
         </div>

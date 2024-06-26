@@ -12,9 +12,9 @@ const FAQ = ({ faq, index, toggleFAQ }) => {
       key={index}
       onClick={() => toggleFAQ(index)}
     >
-      <div className="faq-question inter font-[700] text-[18px] leading-[21.6px] relative text-lg pr-20 transition-all duration-400 ease">
+      <div className="faq-question inter font-[700] text-[18px] leading-[21.6px] relative text-lg pr-20 transition-all duration-500 ease-out">
         {faq.question}
-        <span className=" cursor-pointer absolute top-1/2 right-0 transform -translate-y-1/2 w-8 h-8 transition-all duration-200 ease">
+        <span className=" cursor-pointer absolute top-1/2 right-0 transform -translate-y-1/2 w-8 h-8 transition-all duration-500 ease-out">
           {faq.open ? <div><FaPlus className='rotate-[45deg] text-font-blue ' /></div>  : <FaPlus className='text-font-blue'/>}
         </span>
       </div>

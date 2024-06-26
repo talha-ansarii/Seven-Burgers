@@ -73,7 +73,7 @@ const LongBlogCard = ({ blog }) => {
       </Link>
       <div className="ml-auto relative flex items-start pt-3" ref={dropdownRef}>
         <button onClick={toggleDropdown} className="text-lg">
-          <img src='/3dot.svg' />
+          <img src='/3dot.svg' className='w-[5px]' />
         </button>
         {isDropdownOpen && (
           <div className="absolute left-0 top-10 mt-2 bg-[#1F4386] text-white rounded-lg shadow-lg z-10">

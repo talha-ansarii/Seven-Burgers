@@ -4,11 +4,11 @@ import Newsletter from "./Newsletter";
 
 const Footer = () => {
   return (
-    <div className="bg-[#F4EBDC] flex flex-col   justify-center items-center pb-[40px] ">
+    <div className="bg-[#F4EBDC] flex flex-col   justify-center items-center pb-[10px] ">
       <img src="/logo.svg" alt="logo" className="w-[100px] h-[70px] md:w-[150px] lg:w-[150px] lg:h-[104px] md:h-[104px]" />
       <div className="w-[90%] h-[1px] bg-[#A1A1A1] mb-1"></div>
-      <div className="grid md:grid-cols-4 lg:grid-cols-6  grid-cols-2 gap-4 w-[90%]  p-2">
-        <div className="flex flex-col gap-2  ">
+      <div className="grid md:grid-cols-4 lg:grid-cols-6  grid-cols-2 gap-4 w-[90%]    p-2">
+        <div className="flex flex-col gap-2 ml-8    ">
           <div className="inter font-[600] text-[16px] leading-[26px]">
             Reach us
           </div>
@@ -31,7 +31,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-2    ">
+        <div className="flex flex-col gap-2  ml-10  ">
           <div className="inter font-[600] text-[16px] leading-[26px]">
             Company
           </div>
@@ -39,7 +39,7 @@ const Footer = () => {
           <Link to={"/contact"} className="inter font-[400] text-[12px] leading-[18px]">Contact</Link>
           <Link className="inter font-[400] text-[12px] leading-[18px]">Blogs</Link>
         </div>
-        <div className="flex flex-col gap-2  ">
+        <div className="flex flex-col gap-2 ml-10  ">
           <div className="inter font-[600] text-[16px] leading-[26px]">
             Legal
           </div>
@@ -56,7 +56,7 @@ const Footer = () => {
             Refund Policy
           </a>
         </div>
-        <div className="flex flex-col gap-2   ">
+        <div className="flex flex-col ml-10 gap-2     ">
           <div className="inter font-[600] text-[16px] leading-[26px]">
             Quick Links
           </div>
@@ -68,7 +68,7 @@ const Footer = () => {
           </a>
           <a className="inter font-[400] text-[12px] leading-[18px]">Forum</a>
         </div>
-        <div className='lg:flex md:hidden hidden lg:col-span-2    justify-center items-center '>
+        <div className='lg:flex md:hidden hidden lg:col-span-2     justify-end items-center '>
           <Newsletter />
         </div>
       </div>
