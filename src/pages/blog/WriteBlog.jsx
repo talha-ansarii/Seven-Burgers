@@ -66,8 +66,8 @@ const WriteBlog = () => {
     // S3 Configuration
 
     const REGION = "ap-south-1";
-    const ACCESS_KEY_ID = "AKIA5FTY64UHPMIIXYDS";
-    const SECRET_ACCESS_KEY = "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";
+    const ACCESS_KEY_ID = "";
+    const SECRET_ACCESS_KEY = "";
 
     const s3Client = new S3Client({
       region: REGION,
@@ -76,6 +76,7 @@ const WriteBlog = () => {
         secretAccessKey: SECRET_ACCESS_KEY,
       },
     });
+    
 
     const BUCKET_NAME = "sevenburgers";
     const params = {

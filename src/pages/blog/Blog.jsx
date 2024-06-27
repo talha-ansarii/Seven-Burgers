@@ -23,7 +23,7 @@ const Blog = () => {
   const { id } = useParams();
   const [formattedDate, setFormattedDate] = useState();
   const data = useRecoilValue(allBlogs);
-  console.log(data);
+  // console.log(data);
 
   useEffect(() => {
     const fetchBlog = async () => {
@@ -76,8 +76,8 @@ const Blog = () => {
       <Navbar />
       <div>
         <div className="w-[80%] pt-10 md:pt-[120px] m-auto pb-9">
-          <div className="text-[40px] md:text-[64px] ms:leading-[77.6]  flex justify-center pt-[25px] md:pt-0 lg:pt-0 lg:text-[96px] lg:leading-[116px] text-[#233780] inter font-[600] ">
-            <div dangerouslySetInnerHTML={{ __html: text1 }} />
+          <div className="text-[40px] md:text-[64px] ms:leading-[77.6]  flex justify-center pt-[25px] md:pt-0 lg:pt-0 lg:text-[85px] lg:leading-[116px] text-[#233780] inter font-[600] ">
+            <div className="text-center" dangerouslySetInnerHTML={{ __html: text1 }} />
           </div>
           <div className="text-[#616161] inter font-[500] text-[12px] md:text-[13px] lg:text-[15px] md:leading-[20px] leading-[20px] w-full flex justify-center items-center">
             <div dangerouslySetInnerHTML={{ __html: formattedDate }} />
@@ -95,7 +95,7 @@ const Blog = () => {
               <img
                 src={image1}
                 alt="pic"
-                className="w-[326px] md:w-[741px] lg:w-[1092px]  h-[204px] lg:h-[573px] md:h-[430px] rounded-[10px] object-contain"
+                className="w-[326px] md:w-[741px] lg:w-[1092px]  h-[204px] lg:h-[573px] md:h-[430px] rounded-[10px] object-cover"
               />
             )}
           </div>
@@ -110,7 +110,7 @@ const Blog = () => {
               <img
                 src={image2}
                 alt="pic"
-                className="w-[326px] md:w-[582px] h-[204px] lg:w-[766px] lg:h-[482px] md:h-[343px] rounded-[10px] object-contain"
+                className="w-[326px] md:w-[582px] h-[204px] lg:w-[766px] lg:h-[482px] md:h-[343px] rounded-[10px] object-cover"
               />
             )}{" "}
           </div>
@@ -125,7 +125,7 @@ const Blog = () => {
               <img
                 src={image3}
                 alt="pic"
-                className="w-[326px] md:w-[582px] h-[204px] lg:w-[766px] lg:h-[482px] md:h-[343px] rounded-[10px] object-contain"
+                className="w-[326px] md:w-[582px] h-[204px] lg:w-[766px] lg:h-[482px] md:h-[343px] rounded-[10px] object-cover"
               />
             )}
           </div>
@@ -140,7 +140,7 @@ const Blog = () => {
               <img
                 src={image4}
                 alt="pic"
-                className="w-[326px] md:w-[582px] h-[204px] lg:w-[766px] lg:h-[482px] md:h-[343px] rounded-[10px] object-contain"
+                className="w-[326px] md:w-[582px] h-[204px] lg:w-[766px] lg:h-[482px] md:h-[343px] rounded-[10px] object-cover"
               />
             )}
           </div>

@@ -8,9 +8,9 @@ import Typewriter from "./Typewriter";
 
 const Hero = () => {
   return (
-    <div className="w-full overflow-x-hidden">
+    <div className="w-full overflow-x-hidden ">
       <Navbar />
-      <div className="flex flex-col md:flex-row bg-bg-yellow lg:flex-row justify-center items-center md:bg-bg-yellow md:pt-[55px] lg:pt-[55px] pt-[20px] w-full pb-10 md:h-[667px] lg:h-[667px] ">
+      <div className="flex  flex-col md:flex-row bg-bg-yellow lg:flex-row justify-center items-center md:bg-bg-yellow md:pt-[55px] lg:pt-[55px] pt-[20px] w-full pb-10 md:h-[667px] lg:h-[667px] ">
         <div className="w-full mt-12 ml-10 lg:mt-10 md:w-[60%] lg:w-[40%] flex flex-col lg:p-5 pl-10 box-border ">
         <h1 className=" w-[250px] h-[80px] md:h-[150px] lg:h-[200px] md:w-[300px] lg:w-[480px]"> 
         <Typewriter text={"A Taste of Aristocracy"} delay={100}  />

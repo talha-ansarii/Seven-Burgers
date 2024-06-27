@@ -4,6 +4,8 @@ import BlogCard from "../../components/BLogCard";
 import Footer from "../../components/Footer";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { Pagination } from "@/components/ui/pagination";
+import PaginationButton from "@/components/PaginationButton";
 
 const BlogList = () => {
   const [blogs, setBlogs] = useState([]);
@@ -95,24 +97,9 @@ const BlogList = () => {
             </Link>
           ))}
         </div>
-        <div className="flex justify-center items-center gap-4 m-auto pb-12 mt-24">
-          <button
-            disabled={currentPage === 1}
-            onClick={() => handlePageChange(currentPage - 1)}
-            className="disabled:opacity-50 cursor-pointer"
-          >
-            <img src="/blogarrow.svg" className="w-[8px] " />
-          </button>
-          <div>
-            {currentPage} / {totalPages}
-          </div>
-          <button
-            disabled={currentPage === totalPages}
-            onClick={() => handlePageChange(currentPage + 1)}
-            className="disabled:opacity-50 cursor-pointer"
-          >
-            <img src="/blogarrow.svg" className="w-[8px] rotate-180" />
-          </button>
+        <div className="flex justify-center items-center m-auto pb-12 mt-10">
+        <PaginationButton currentPage={currentPage}  totalPages={totalPages} handlePageChange={handlePageChange} />
+          
         </div>
       </div>
       <Footer />
