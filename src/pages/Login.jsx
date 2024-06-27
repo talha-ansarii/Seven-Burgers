@@ -6,48 +6,42 @@ import { signinState } from "../../store/atoms/signin";
 import { allBlogs } from "../../store/atoms/allBlogs";
 import { useNavigate } from "react-router-dom";
 
-
 const Login = () => {
   const [userData, setUserData] = useState({ userId: "", password: "" });
-  const [loading , setLoading] = useState(false)
-  const [error , setError] = useState("")
-  const setSignin = useSetRecoilState(signinState)
-  const navigate = useNavigate()
-  
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const setSignin = useSetRecoilState(signinState);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { id, value } = e.target;
     setUserData((prevData) => ({ ...prevData, [id]: value }));
   };
 
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log("User Data:", userData);
     const { userId: email, password } = userData;
-    
+
     try {
       setLoading(true);
-      const response = await axios.post("http://127.0.0.1:8787/api/v1/user/signin", {
-        email,
-        password,
-      }
-    ); 
+      const response = await axios.post(
+        "https://backend.sevenburgers.workers.dev/api/v1/user/signin",
+        {
+          email,
+          password,
+        }
+      );
       // console.log(response)
-      localStorage.setItem("token",response?.data?.token);
-      setSignin(true)
-      setLoading(false)
-      navigate("/blogs/pastblogs")
-
-      
-       
-    } catch (error) { 
+      localStorage.setItem("token", response?.data?.token);
+      setSignin(true);
+      setLoading(false);
+      navigate("/blogs/pastblogs");
+    } catch (error) {
       setError(error.response.data.message);
     }
   };
 
-  
   return (
     <>
       <div className="hidden relative lg:block md:hidden bg-[#F4EBDC] min-h-[100vh] md:p-12 lg:p-12 px-6 pt-12 pb-12">
@@ -93,8 +87,7 @@ const Login = () => {
                   >
                     Login
                   </button>
-          <div className="text-red-500 mt-4 ">{error}</div>
-
+                  <div className="text-red-500 mt-4 ">{error}</div>
                 </form>
               </div>
             </div>
@@ -110,15 +103,21 @@ const Login = () => {
             <img src="/logo.png" alt="logo" className="w-[40px] h-[28px]" />
             <div className="inter text-[12px] font-[800]">Seven Burgers</div>
           </div>
-          <h1 className="text-3xl font-bold text-darkblue">Hello, Welcome Back</h1>
-          <p className="text-gray-600">Hey, welcome back to your special place!</p>
+          <h1 className="text-3xl font-bold text-darkblue">
+            Hello, Welcome Back
+          </h1>
+          <p className="text-gray-600">
+            Hey, welcome back to your special place!
+          </p>
         </div>
         <div className="relative p-10 bg-[#233780] rounded-md shadow-lg overflow-hidden">
           <div className="absolute md:w-[50px] md:h-[50px] md:bottom-[5%] md:right-[10%] lg:bottom-[10%] lg:right-[20%] lg:w-[138px] lg:h-[138px] rounded-full z-20 bg-[#F4EBDC]"></div>
           <div className="md:w-[100px] md:h-[100px] md:bottom-[-8%] md:right-[-15%] absolute lg:bottom-[-15%] lg:right-[-10%] lg:w-[269px] lg:h-[269px] rounded-full z-10 bg-[#FED676]"></div>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
-              <label className="block text-white mb-2" htmlFor="userId">Email</label>
+              <label className="block text-white mb-2" htmlFor="userId">
+                Email
+              </label>
               <input
                 className="w-full bg-[#233780] p-2 border rounded"
                 type="email"
@@ -128,7 +127,9 @@ const Login = () => {
               />
             </div>
             <div className="mb-6">
-              <label className="block text-white mb-2" htmlFor="password">Password</label>
+              <label className="block text-white mb-2" htmlFor="password">
+                Password
+              </label>
               <input
                 className="w-full bg-[#233780] p-2 border rounded"
                 type="password"
@@ -139,15 +140,15 @@ const Login = () => {
             </div>
             <div className="text-center">
               <button
-              type="submit"
-               className="px-4 py-2 bg-white text-darkblue rounded hover:bg-gray-200">
+                type="submit"
+                className="px-4 py-2 bg-white text-darkblue rounded hover:bg-gray-200"
+              >
                 Sign In
               </button>
             </div>
-          <div className="text-red-500 mt-4">{error}</div>
+            <div className="text-red-500 mt-4">{error}</div>
           </form>
         </div>
-        
       </div>
     </>
   );

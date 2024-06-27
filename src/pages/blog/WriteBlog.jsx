@@ -104,23 +104,22 @@ const WriteBlog = () => {
   const handleFolderName = (e) => {
     setFolderName(e.target.value);
   };
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     setLoading(true);
-  
+
     console.log("in submit block");
     if (!folderName) {
       alert("Please enter a blog number");
       setLoading(false);
       return;
     }
-  
+
     let imgUrls = [];
     let content = [];
-  
+
     try {
       if (file1) {
         const img1url = await uploadFile(file1, "image1");
@@ -139,63 +138,58 @@ const WriteBlog = () => {
         imgUrls.push(img4url);
       }
       console.log(imgUrls);
-  
+
       if (text2) content.push(text2);
       if (text3) content.push(text3);
       if (text4) content.push(text4);
-  
-      const url = "http://127.0.0.1:8787/api/v1/blog";
+
+      const url = "https://backend.sevenburgers.workers.dev/api/v1/blog";
       const token = localStorage.getItem("token");
-  
+
       const data = {
         title: text1,
         content: content,
-        images: imgUrls, 
-        blogNo: parseInt(folderName)
+        images: imgUrls,
+        blogNo: parseInt(folderName),
       };
-      console.log(text1)
-      console.log(content)
-      console.log(imgUrls)
-      console.log(folderName)
+      console.log(text1);
+      console.log(content);
+      console.log(imgUrls);
+      console.log(folderName);
       // console.log(data)
 
-
-      
-  
       console.log("in try block");
-  
+
       const response = await fetch(url, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Authorization': `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
       });
-      
+
       const responseData = await response.json();
-      
-      
 
       setContent([]);
       setImgUrls([]);
       setLoading(false);
       navigate("/blogs/" + responseData.id);
-  
+
       console.log("Response:", responseData);
-
-
     } catch (error) {
       console.log(error);
       setLoading(false);
     }
   };
-  
 
   return (
     <div className="bg-[#F4EBDC]">
       <div className="w-[100%] p-8 flex justify-between mx-auto">
         <div className="flex justify-start items-center gap-x-2">
-          <img className="md:w-[100px] md:h-[60px] lg:w-[100px] lg:h-[60px] w-[50px] h-[30px] " src="/logo.png" />
+          <img
+            className="md:w-[100px] md:h-[60px] lg:w-[100px] lg:h-[60px] w-[50px] h-[30px] "
+            src="/logo.png"
+          />
           <div className=" text-[15px]  md:text-[30px] lg:text-[30px]  text-[#233780] inter font-[600]">
             Seven Burgers
           </div>

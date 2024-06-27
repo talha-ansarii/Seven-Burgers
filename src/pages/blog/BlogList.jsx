@@ -1,28 +1,30 @@
-import React, { useEffect, useState } from 'react';
-import Navbar from '../../components/Navbar';
-import BlogCard from '../../components/BLogCard';
-import Footer from '../../components/Footer';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import Navbar from "../../components/Navbar";
+import BlogCard from "../../components/BLogCard";
+import Footer from "../../components/Footer";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 const BlogList = () => {
   const [blogs, setBlogs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
-
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8787/api/v1/blog/bulk?page=${currentPage}&pageSize=9`,{
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}` 
+        const response = await axios.get(
+          `https://backend.sevenburgers.workers.dev/api/v1/blog/bulk?page=${currentPage}&pageSize=9`,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
           }
-        });
+        );
         setBlogs(response.data.blogs);
         setTotalPages(response.data.totalPages);
       } catch (error) {
-        console.error('Error fetching blogs:', error);
+        console.error("Error fetching blogs:", error);
       }
     };
     fetchBlogs();
@@ -42,54 +44,74 @@ const BlogList = () => {
   // console.log(latestBlog)
   const date = new Date(latestBlog?.createdAt);
 
-  const options = { year: 'numeric', month: 'long', day: 'numeric' };
-  const formattedDate = date.toLocaleDateString('en-US', options);
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  const formattedDate = date.toLocaleDateString("en-US", options);
 
   return (
     <div>
       <Navbar />
-      <div className='relative  md:pt-[200px] lg:pt-24 bg-[#FED676] h-[700px] lg:h-[1000px] md:h-[800px] p-8 flex flex-col justify-start items-center'>
-        <div className='mt-[150px] md:pt-2 pt-0 lg:pt-0 font-migra w-[105px] h-[49px] text-[32px] font-[800] lg:w-[355px] lg:h-[163px] md:w-[192px] md:h-[88px] text-center lg:text-[96px] text-[#FED676] bg-[#1F4386] rounded-[92px] md:text-[48px]'>
-          Blog
-        </div>
-        <div className='flex lg:flex-row md:flex-row flex-col mt-[50px]'>
-          <img src={latestBlog?.images[0]} className='z-10 w-[326px] h-[176px] md:w-[417px] md:h-[251px] lg:w-[818px] lg:h-[471px] object-cover rounded-[20px] md:rounded-[40px] lg:rounded-[40px]' />
-          <div className='flex flex-col justify-around md:w-[360px] items-start bg-[#F6EDDF] pl-4 pb-4 lg:pl-[100px] md:pl-[100px] md:ml-[-90px] lg:ml-[-90px] z-0 w-[326px] h-[128px] p-2 lg:w-[477px] lg:h-[471px] md:h-[251px] blog-shadow lg:rounded-[40px] rounded-b-[20px] md:rounded-[40px] mt-[-20px] md:mt-[0px] lg:mt-[0px]'>
-            <div className='text-[24px] pt-[18px] md:pt-0 lg:pt-0 md:text-[30px] lg:text-[30px] text-[#233780] inter font-[600]'>
-              <div dangerouslySetInnerHTML={{ __html: latestBlog?.title }}></div>
-            </div>
-            <div className='flex justify-center items-center gap-2'>
-              <img className='w-[20px] h-[15px] md:w-[30px] lg:w-[30px] lg:h-[20px] md:h-[20px]' src='/logo.png' />
-              <div className='md:text-[12px] lg:text-[12px] text-[11px] text-[#233780] inter font-[600]'>{formattedDate}</div>
+      <Link to={`/blogs/${latestBlog?.id}`} className="relative">
+        <div className="relative  md:pt-[200px] lg:pt-24 bg-[#FED676] h-[700px] lg:h-[1000px] md:h-[800px] p-8 flex flex-col justify-start items-center">
+          <div className="mt-[150px] md:pt-2 pt-0 lg:pt-0 font-migra w-[105px] h-[49px] text-[32px] font-[800] lg:w-[355px] lg:h-[163px] md:w-[192px] md:h-[88px] text-center lg:text-[96px] text-[#FED676] bg-[#1F4386] rounded-[92px] md:text-[48px]">
+            Blog
+          </div>
+          <div className="flex lg:flex-row md:flex-row flex-col mt-[50px]">
+            <img
+              src={latestBlog?.images[0]}
+              className="z-10 w-[326px] h-[176px] md:w-[417px] md:h-[251px] lg:w-[818px] lg:h-[471px] object-cover rounded-[20px] md:rounded-[40px] lg:rounded-[40px]"
+            />
+            <div className="flex flex-col justify-around md:w-[360px] items-start bg-[#F6EDDF] pl-4 pb-4 lg:pl-[100px] md:pl-[100px] md:ml-[-90px] lg:ml-[-90px] z-0 w-[326px] h-[128px] p-2 lg:w-[477px] lg:h-[471px] md:h-[251px] blog-shadow lg:rounded-[40px] rounded-b-[20px] md:rounded-[40px] mt-[-20px] md:mt-[0px] lg:mt-[0px]">
+              <div className="text-[24px] pt-[18px] md:pt-0 lg:pt-0 md:text-[30px] lg:text-[30px] text-[#233780] inter font-[600]">
+                <div
+                  dangerouslySetInnerHTML={{ __html: latestBlog?.title }}
+                ></div>
+              </div>
+              <div className="flex justify-center items-center gap-2">
+                <img
+                  className="w-[20px] h-[15px] md:w-[30px] lg:w-[30px] lg:h-[20px] md:h-[20px]"
+                  src="/logo.png"
+                />
+                <div className="md:text-[12px] lg:text-[12px] text-[11px] text-[#233780] inter font-[600]">
+                  {formattedDate}
+                </div>
+              </div>
             </div>
           </div>
+          <img
+            className="absolute w-[80px] md:w-auto lg:w-auto top-[100px] right-[10%]"
+            src="/book.png"
+          />
+          <img
+            className="absolute w-[80px] md:w-auto lg:w-auto lg:top-[200px] md:top-[200px] left-[10%]"
+            src="/note.png"
+          />
         </div>
-        <img className='absolute w-[80px] md:w-auto lg:w-auto top-[100px] right-[10%]' src='/book.png' />
-        <img className='absolute w-[80px] md:w-auto lg:w-auto lg:top-[200px] md:top-[200px] left-[10%]' src='/note.png' />
-      </div>
-      <div className='w-full bg-[#F4EBDC] '>
-        <div className='pt-10 bg-[#F4EBDC] grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 w-[80%] m-auto'>
+      </Link>
+      <div className="w-full bg-[#F4EBDC] ">
+        <div className="pt-10 bg-[#F4EBDC] grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 w-[80%] m-auto">
           {blogs.map((blog) => (
             <Link to={`/blogs/${blog.id}`} key={blog.id}>
               <BlogCard blog={blog} />
             </Link>
           ))}
         </div>
-        <div className='flex justify-center items-center gap-4 m-auto pb-12 mt-24'>
+        <div className="flex justify-center items-center gap-4 m-auto pb-12 mt-24">
           <button
             disabled={currentPage === 1}
             onClick={() => handlePageChange(currentPage - 1)}
-            className='disabled:opacity-50 cursor-pointer'
+            className="disabled:opacity-50 cursor-pointer"
           >
-            <img src='/blogarrow.svg' className='w-[8px] ' />
+            <img src="/blogarrow.svg" className="w-[8px] " />
           </button>
-          <div>{currentPage} / {totalPages}</div>
+          <div>
+            {currentPage} / {totalPages}
+          </div>
           <button
             disabled={currentPage === totalPages}
             onClick={() => handlePageChange(currentPage + 1)}
-            className='disabled:opacity-50 cursor-pointer'
+            className="disabled:opacity-50 cursor-pointer"
           >
-            <img src='/blogarrow.svg' className='w-[8px] rotate-180' />
+            <img src="/blogarrow.svg" className="w-[8px] rotate-180" />
           </button>
         </div>
       </div>

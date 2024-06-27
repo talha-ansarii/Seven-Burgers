@@ -1,24 +1,25 @@
-import axios from 'axios';
-import { atom, selector } from 'recoil';
+import axios from "axios";
+import { atom, selector } from "recoil";
 
 export const allBlogs = atom({
-  key: 'allBlogs', // unique ID (with respect to other atoms/selectors)
+  key: "allBlogs", // unique ID (with respect to other atoms/selectors)
   default: selector({
-    key : "allBlogs/default",
+    key: "allBlogs/default",
     get: async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8787/api/v1/blog/bulk`,{
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}` 
+        const response = await axios.get(
+          `https://backend.sevenburgers.workers.dev/api/v1/blog/bulk`,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
           }
-         })
-        return response.data
-        
+        );
+        return response.data;
       } catch (error) {
         console.error(error);
-        return {success : false, message : "error while fetching blogs"}
-        
+        return { success: false, message: "error while fetching blogs" };
       }
-    }
-  }),         
+    },
+  }),
 });

@@ -2,7 +2,11 @@ import { useParams } from "react-router";
 import React, { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { DeleteObjectCommand, PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
+import {
+  DeleteObjectCommand,
+  PutObjectCommand,
+  S3Client,
+} from "@aws-sdk/client-s3";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { set } from "lodash";
@@ -35,7 +39,6 @@ const EditBlog = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-
   const REGION = "ap-south-1";
   const ACCESS_KEY_ID = "AKIA5FTY64UHPMIIXYDS";
   const SECRET_ACCESS_KEY = "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";
@@ -54,7 +57,7 @@ const EditBlog = () => {
     const fetchBlog = async () => {
       try {
         const response = await axios.get(
-          `http://127.0.0.1:8787/api/v1/blog/${id}`,
+          `https://backend.sevenburgers.workers.dev/api/v1/blog/${id}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -67,27 +70,20 @@ const EditBlog = () => {
         setText3(response.data.blog.content[1]);
         setText4(response.data.blog.content[2]);
 
-
-       
-
-        
-        response.data.blog.images.forEach(image => {
+        response.data.blog.images.forEach((image) => {
           // console.log(image)
-          if (image.includes('image1')) {
-              setImage1(image);
-          } else if (image.includes('image2')) {
-              setImage2(image);
+          if (image.includes("image1")) {
+            setImage1(image);
+          } else if (image.includes("image2")) {
+            setImage2(image);
+          } else if (image.includes("image3")) {
+            setImage3(image);
+          } else if (image.includes("image4")) {
+            setImage4(image);
           }
-          else if (image.includes('image3')) {
-              setImage3(image);
-          }
-          else if (image.includes('image4')) {
-              setImage4(image);
-          }
-      });
+        });
 
         setImgUrls(response.data.blog.images);
-
 
         setNoImg1("img");
         setNoImg2("img");
@@ -132,8 +128,6 @@ const EditBlog = () => {
     }
     // console.log(folderName);
     // S3 Configuration
-
-   
 
     const BUCKET_NAME = "sevenburgers";
     const params = {
@@ -193,7 +187,7 @@ const EditBlog = () => {
     if (text3) content.push(text3);
     if (text4) content.push(text4);
 
-    const url = `http://127.0.0.1:8787/api/v1/blog`;
+    const url = `https://backend.sevenburgers.workers.dev/api/v1/blog`;
     const token = localStorage.getItem("token");
 
     const data = {
@@ -238,7 +232,7 @@ const EditBlog = () => {
     try {
       const command = new DeleteObjectCommand(params);
       const data = await s3Client.send(command);
-      console.log(data)
+      console.log(data);
       console.log(
         `${imageName} has been deleted from ${bucketName}/${folderPath}`
       );
