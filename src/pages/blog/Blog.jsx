@@ -18,7 +18,6 @@ const Blog = () => {
   const [image2, setImage2] = useState();
   const [image3, setImage3] = useState();
   const [image4, setImage4] = useState();
-  const navigate = useNavigate();
   const { id } = useParams();
   const [formattedDate, setFormattedDate] = useState();
   const data = useRecoilValue(allBlogs);
@@ -38,12 +37,9 @@ const Blog = () => {
           );
           const { blog } = response.data;
           setText1(blog.title);
-
           setText2(blog.content[0]);
           setText3(blog.content[1]);
           setText4(blog.content[2]);
-
-          console.log(blog.images);
 
           blog.images.forEach((image) => {
             if (image.includes("image1")) {
@@ -72,7 +68,7 @@ const Blog = () => {
   return (
     <div className="bg-[#F4EBDC]">
       <Navbar />
-      <div>
+      <div className="">
         <div className="w-[80%] pt-10 md:pt-[120px] m-auto pb-9">
           <div className="text-[40px] md:text-[64px] ms:leading-[77.6] flex justify-center pt-[25px] md:pt-0 lg:pt-0 lg:text-[85px] lg:leading-[116px] text-[#233780] inter font-[600]">
             <div
@@ -116,37 +112,56 @@ const Blog = () => {
             )}
           </div>
         </div>
+        
+        <div className="relative">
+          <div className="md:flex lg:flex hidden flex-col gap-1   sticky w-[22px] mt-10 left-[20%] top-[200px]">
+          <a href="#">
 
-        <div className="w-[80%] m-auto">
-          <div className="my-6 inter">
-            <div dangerouslySetInnerHTML={{ __html: text3 }} />
+            <img src="/twitter.svg" className="w-[21px] h-[21px]" />
+          </a>
+          <a href="#">
+
+            <img src="/InstagramLogo.svg" className="w-[21px] h-[21px]" />
+          </a>
+          <a href="#">
+
+            <img src="/facee.svg" className="w-[21px] h-[21px]" />
+          </a>
           </div>
-          <div className="flex wfull justify-center items-center">
-            {image3 && (
-              <img
-                src={image3}
-                alt="pic"
-                className="w-[326px] md:w-[582px] h-[204px] lg:w-[766px] lg:h-[482px] md:h-[343px] rounded-[10px] object-cover"
-              />
-            )}
+
+          <div className="w-[50%] mx-auto md:mt-[-100px] lg:mt-[-100px] ">
+            <div className="my-6 inter">
+              <div dangerouslySetInnerHTML={{ __html: text3 }} />
+            </div>
+            <div className="flex w-full justify-center items-center">
+              {image3 && (
+                <img
+                  src={image3}
+                  alt="pic"
+                  className="w-[326px] md:w-[582px] h-[204px] lg:w-[766px] lg:h-[482px] md:h-[343px] rounded-[10px] object-cover"
+                />
+              )}
+            </div>
+          </div>
+
+          <div className="w-[50%] m-auto">
+            <div className="py-6 inter">
+              <div dangerouslySetInnerHTML={{ __html: text4 }} />
+            </div>
+            <div className="flex w-full justify-center items-center">
+              {image4 && (
+                <img
+                  src={image4}
+                  alt="pic"
+                  className="w-[326px] md:w-[582px] h-[204px] lg:w-[766px] lg:h-[482px] md:h-[343px] rounded-[10px] object-cover"
+                />
+              )}
+            </div>
           </div>
         </div>
 
-        <div className="w-[80%] m-auto">
-          <div className="py-6 inter">
-            <div dangerouslySetInnerHTML={{ __html: text4 }} />
-          </div>
-          <div className="flex wfull justify-center items-center">
-            {image4 && (
-              <img
-                src={image4}
-                alt="pic"
-                className="w-[326px] md:w-[582px] h-[204px] lg:w-[766px] lg:h-[482px] md:h-[343px] rounded-[10px] object-cover"
-              />
-            )}
-          </div>
-
-          <div className="bg-[#A1A1A1] h-[1px] w-full mt-28"></div>
+        <div className="w-full flex justify-center items-center flex-col">
+          <div className="bg-[#A1A1A1] h-[1px] w-[80%] mt-28"></div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
             {data?.blogs?.map((blog) => (
               <Link to={`/blogs/${blog.id}`} key={blog.id}>
