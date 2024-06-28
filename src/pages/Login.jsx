@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
 import { signinState } from "../../store/atoms/signin";
-import { allBlogs } from "../../store/atoms/allBlogs";
+import { allBlogs } from "../../store/atoms/allBlogPaginations";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -26,7 +26,7 @@ const Login = () => {
     try {
       setLoading(true);
       const response = await axios.post(
-        "https://backend.sevenburgers.workers.dev/api/v1/user/signin",
+        "http://127.0.0.1:8787/api/v1/user/signin",
         {
           email,
           password,

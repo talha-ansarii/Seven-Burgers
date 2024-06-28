@@ -16,7 +16,7 @@ const BlogList = () => {
     const fetchBlogs = async () => {
       try {
         const response = await axios.get(
-          `https://backend.sevenburgers.workers.dev/api/v1/blog/bulk?page=${currentPage}&pageSize=9`,
+          `http://127.0.0.1:8787/api/v1/blog/bulk?page=${currentPage}&pageSize=9`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -98,8 +98,11 @@ const BlogList = () => {
           ))}
         </div>
         <div className="flex justify-center items-center m-auto pb-12 mt-10">
-        <PaginationButton currentPage={currentPage}  totalPages={totalPages} handlePageChange={handlePageChange} />
-          
+          <PaginationButton
+            currentPage={currentPage}
+            totalPages={totalPages}
+            handlePageChange={handlePageChange}
+          />
         </div>
       </div>
       <Footer />

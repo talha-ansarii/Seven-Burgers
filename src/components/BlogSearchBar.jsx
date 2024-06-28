@@ -34,7 +34,7 @@ const BLogSearchBar = ({ sortOrder, toggleSortOrder, setResults }) => {
   const handleSearch = async (e) => {
     try {
       const response = await fetch(
-        `https://backend.sevenburgers.workers.dev/api/v1/blog/search/${query}`
+        `http://127.0.0.1:8787/api/v1/blog/search/${query}`
       );
       const data = await response.json();
       console.log(data);

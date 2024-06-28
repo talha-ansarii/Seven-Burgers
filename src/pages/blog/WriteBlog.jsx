@@ -76,7 +76,6 @@ const WriteBlog = () => {
         secretAccessKey: SECRET_ACCESS_KEY,
       },
     });
-    
 
     const BUCKET_NAME = "sevenburgers";
     const params = {
@@ -144,7 +143,7 @@ const WriteBlog = () => {
       if (text3) content.push(text3);
       if (text4) content.push(text4);
 
-      const url = "https://backend.sevenburgers.workers.dev/api/v1/blog";
+      const url = "http://127.0.0.1:8787/api/v1/blog";
       const token = localStorage.getItem("token");
 
       const data = {

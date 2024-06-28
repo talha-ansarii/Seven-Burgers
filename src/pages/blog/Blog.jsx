@@ -1,12 +1,12 @@
 import { useParams } from "react-router";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useTransition } from "react";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import BlogCard from "../../components/BLogCard";
 import { useRecoilValue } from "recoil";
-import { allBlogs } from "../../../store/atoms/allBlogs";
+import { allBlogs } from "../../../store/atoms/allBlogPaginations";
 import Footer from "../../components/Footer";
 
 const Blog = () => {
@@ -18,66 +18,67 @@ const Blog = () => {
   const [image2, setImage2] = useState();
   const [image3, setImage3] = useState();
   const [image4, setImage4] = useState();
-  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { id } = useParams();
   const [formattedDate, setFormattedDate] = useState();
   const data = useRecoilValue(allBlogs);
-  // console.log(data);
+  const [isPending, startTransition] = useTransition();
 
   useEffect(() => {
-    const fetchBlog = async () => {
-      try {
-        const response = await axios.get(
-          `https://backend.sevenburgers.workers.dev/api/v1/blog/${id}`,
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
-        const { blog } = response.data;
-        setText1(blog.title);
+    startTransition(() => {
+      const fetchBlog = async () => {
+        try {
+          const response = await axios.get(
+            `http://127.0.0.1:8787/api/v1/blog/${id}`,
+            {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+              },
+            }
+          );
+          const { blog } = response.data;
+          setText1(blog.title);
 
-        setText2(blog.content[0]);
-        setText3(blog.content[1]);
-        setText4(blog.content[2]);
+          setText2(blog.content[0]);
+          setText3(blog.content[1]);
+          setText4(blog.content[2]);
 
-        console.log(blog.images);
+          console.log(blog.images);
 
-        blog.images.forEach((image) => {
-          // console.log(image)
-          if (image.includes("image1")) {
-            setImage1(image);
-          } else if (image.includes("image2")) {
-            setImage2(image);
-          } else if (image.includes("image3")) {
-            setImage3(image);
-          } else if (image.includes("image4")) {
-            setImage4(image);
-          }
-        });
+          blog.images.forEach((image) => {
+            if (image.includes("image1")) {
+              setImage1(image);
+            } else if (image.includes("image2")) {
+              setImage2(image);
+            } else if (image.includes("image3")) {
+              setImage3(image);
+            } else if (image.includes("image4")) {
+              setImage4(image);
+            }
+          });
 
-        // console.log(image1, image2, image3, image4)
-
-        const date = new Date(blog?.createdAt);
-        const options = { year: "numeric", month: "long", day: "numeric" };
-        const formattedDatee = date.toLocaleDateString("en-US", options);
-        setFormattedDate(formattedDatee);
-      } catch (error) {
-        console.error("Error fetching blogs:", error);
-      }
-    };
-    fetchBlog();
+          const date = new Date(blog?.createdAt);
+          const options = { year: "numeric", month: "long", day: "numeric" };
+          const formattedDatee = date.toLocaleDateString("en-US", options);
+          setFormattedDate(formattedDatee);
+        } catch (error) {
+          console.error("Error fetching blogs:", error);
+        }
+      };
+      fetchBlog();
+    });
   }, [id]);
 
   return (
-    <div className="bg-[#F4EBDC]  ">
+    <div className="bg-[#F4EBDC]">
       <Navbar />
       <div>
         <div className="w-[80%] pt-10 md:pt-[120px] m-auto pb-9">
-          <div className="text-[40px] md:text-[64px] ms:leading-[77.6]  flex justify-center pt-[25px] md:pt-0 lg:pt-0 lg:text-[85px] lg:leading-[116px] text-[#233780] inter font-[600] ">
-            <div className="text-center" dangerouslySetInnerHTML={{ __html: text1 }} />
+          <div className="text-[40px] md:text-[64px] ms:leading-[77.6] flex justify-center pt-[25px] md:pt-0 lg:pt-0 lg:text-[85px] lg:leading-[116px] text-[#233780] inter font-[600]">
+            <div
+              className="text-center"
+              dangerouslySetInnerHTML={{ __html: text1 }}
+            />
           </div>
           <div className="text-[#616161] inter font-[500] text-[12px] md:text-[13px] lg:text-[15px] md:leading-[20px] leading-[20px] w-full flex justify-center items-center">
             <div dangerouslySetInnerHTML={{ __html: formattedDate }} />
@@ -95,7 +96,7 @@ const Blog = () => {
               <img
                 src={image1}
                 alt="pic"
-                className="w-[326px] md:w-[741px] lg:w-[1092px]  h-[204px] lg:h-[573px] md:h-[430px] rounded-[10px] object-cover"
+                className="w-[326px] md:w-[741px] lg:w-[1092px] h-[204px] lg:h-[573px] md:h-[430px] rounded-[10px] object-cover"
               />
             )}
           </div>
@@ -112,7 +113,7 @@ const Blog = () => {
                 alt="pic"
                 className="w-[326px] md:w-[582px] h-[204px] lg:w-[766px] lg:h-[482px] md:h-[343px] rounded-[10px] object-cover"
               />
-            )}{" "}
+            )}
           </div>
         </div>
 
