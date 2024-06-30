@@ -12,10 +12,14 @@ import PastBlogs from "./pages/blog/PastBlogs";
 import WriteBlog from "./pages/blog/WriteBlog";
 import Blog from "./pages/blog/Blog";
 import EditBlog from "./pages/blog/EditBlog";
+import { Suspense } from "react";
+import LoadingScreen from "./components/LoadingScreen";
 
 function App() {
   return (
     <div className="w-full">
+    <Suspense fallback={<LoadingScreen/>}>
+
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/contact" element={<Contact />} />
@@ -29,6 +33,7 @@ function App() {
         <Route path="/blogs/:id" element={<Blog />} />
         <Route path="/blogs/editblog/:id" element={<EditBlog />} />
       </Routes>
+    </Suspense>
     </div>
   );
 }

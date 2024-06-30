@@ -24,7 +24,6 @@ const Blog = () => {
   const [isPending, startTransition] = useTransition();
 
   useEffect(() => {
-    startTransition(() => {
       const fetchBlog = async () => {
         try {
           const response = await axios.get(
@@ -62,7 +61,7 @@ const Blog = () => {
         }
       };
       fetchBlog();
-    });
+    
   }, [id]);
 
   return (
