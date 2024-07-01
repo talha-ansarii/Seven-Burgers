@@ -16,7 +16,6 @@ const Hero = () => {
         <h1 className=" w-[250px] h-[80px] md:h-[150px] lg:h-[200px] md:w-[300px] lg:w-[480px]"> 
         <Typewriter text={"A Taste of Aristocracy"} delay={100}  />
       </h1>
-      <Link to={"/login"}>LOGIN</Link>
       <br/>
       <br/>
           <button className="hidden md:w-[174px] lg:w-[174px] w-[100px] bg-font-blue text-white font-migra text-[10px] md:text-[20px] lg:text-[20px] leading-[24.2px] font-[800] md:py-[16px] px-[10px] py-[5px] md:px-[28px] lg:py-[16px] lg:px-[28px] rounded-[34px] md:flex lg:flex justify-center items-center gap-1 hover:shadow-none transition-all ease-out duration-300 shadow-order-button">
