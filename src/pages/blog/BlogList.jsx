@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar";
 import BlogCard from "../../components/BLogCard";
 import Footer from "../../components/Footer";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Pagination } from "@/components/ui/pagination";
 import PaginationButton from "@/components/PaginationButton";
@@ -11,6 +11,8 @@ const BlogList = () => {
   const [blogs, setBlogs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -92,9 +94,15 @@ const BlogList = () => {
       <div className="w-full bg-[#F4EBDC] ">
         <div className="pt-10 bg-[#F4EBDC] grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 w-[80%] m-auto">
           {blogs.map((blog) => (
-            <Link to={`/blogs/${blog.id}`} key={blog.id}>
+            <div
+              onClick={() => {
+                navigate(`/blogs/${blog.id}`);
+                window.location.reload();
+              }}
+              key={blog.id}
+            >
               <BlogCard blog={blog} />
-            </Link>
+            </div>
           ))}
         </div>
         <div className="flex justify-center items-center m-auto pb-12 mt-10">

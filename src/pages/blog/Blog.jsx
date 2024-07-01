@@ -23,6 +23,8 @@ const Blog = () => {
   const data = useRecoilValue(allBlogs);
   const [isPending, startTransition] = useTransition();
 
+  const navigate = useNavigate();
+
   useEffect(() => {
       const fetchBlog = async () => {
         try {
@@ -63,6 +65,8 @@ const Blog = () => {
       fetchBlog();
     
   }, [id]);
+
+
 
   return (
     <div className="bg-[#F4EBDC]">
@@ -163,9 +167,15 @@ const Blog = () => {
           <div className="bg-[#A1A1A1] h-[1px] w-[80%] mt-28"></div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
             {data?.blogs?.map((blog) => (
-              <Link to={`/blogs/${blog.id}`} key={blog.id}>
+              <div  key={blog.id}>
+              <div onClick={() => {
+                navigate(`/blogs/${blog.id}`);
+                window.location.reload()
+              }}>
+
                 <BlogCard blog={blog} />
-              </Link>
+              </div>
+              </div>
             ))}
           </div>
         </div>

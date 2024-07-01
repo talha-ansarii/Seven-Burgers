@@ -72,8 +72,8 @@ const WriteBlog = () => {
     const s3Client = new S3Client({
       region: REGION,
       credentials: {
-        accessKeyId: ACCESS_KEY_ID,
-        secretAccessKey: SECRET_ACCESS_KEY,
+        accessKeyId: import.meta.env.VITE_ACCESS_KEY_ID,
+        secretAccessKey: import.meta.env.VITE_SECRET_ACCESS_KEY,
       },
     });
 

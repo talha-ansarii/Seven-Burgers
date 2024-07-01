@@ -9,7 +9,6 @@ import {
 } from "@aws-sdk/client-s3";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { set } from "lodash";
 
 const EditBlog = () => {
   const [text1, setText1] = useState("");
@@ -40,14 +39,15 @@ const EditBlog = () => {
   const { id } = useParams();
 
   const REGION = "ap-south-1";
-  const ACCESS_KEY_ID = "";
-  const SECRET_ACCESS_KEY = "";
+
+
+  // console.log(import.meta.env.VITE_SECRET_ACCESS_KEY)
 
   const s3Client = new S3Client({
     region: REGION,
     credentials: {
-      accessKeyId: ACCESS_KEY_ID,
-      secretAccessKey: SECRET_ACCESS_KEY,
+      accessKeyId: import.meta.env.VITE_ACCESS_KEY_ID,
+      secretAccessKey: import.meta.env.VITE_SECRET_ACCESS_KEY,
     },
   });
 
@@ -229,7 +229,7 @@ const EditBlog = () => {
       Key: `${folderPath}/${imageName}`,
     };
 
-    try {
+    try { 
       const command = new DeleteObjectCommand(params);
       const data = await s3Client.send(command);
       console.log(data);
