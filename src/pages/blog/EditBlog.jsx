@@ -40,7 +40,6 @@ const EditBlog = () => {
 
   const REGION = "ap-south-1";
 
-
   // console.log(import.meta.env.VITE_SECRET_ACCESS_KEY)
 
   const s3Client = new S3Client({
@@ -57,7 +56,7 @@ const EditBlog = () => {
     const fetchBlog = async () => {
       try {
         const response = await axios.get(
-          `http://127.0.0.1:8787/api/v1/blog/${id}`,
+          `https://backend.sevenburgers.workers.dev/api/v1/blog/${id}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -187,7 +186,7 @@ const EditBlog = () => {
     if (text3) content.push(text3);
     if (text4) content.push(text4);
 
-    const url = `http://127.0.0.1:8787/api/v1/blog`;
+    const url = `https://backend.sevenburgers.workers.dev/api/v1/blog`;
     const token = localStorage.getItem("token");
 
     const data = {
@@ -229,7 +228,7 @@ const EditBlog = () => {
       Key: `${folderPath}/${imageName}`,
     };
 
-    try { 
+    try {
       const command = new DeleteObjectCommand(params);
       const data = await s3Client.send(command);
       console.log(data);

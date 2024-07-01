@@ -18,7 +18,7 @@ const BlogList = () => {
     const fetchBlogs = async () => {
       try {
         const response = await axios.get(
-          `http://127.0.0.1:8787/api/v1/blog/bulk?page=${currentPage}&pageSize=9`,
+          `https://backend.sevenburgers.workers.dev/api/v1/blog/bulk?page=${currentPage}&pageSize=9`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,

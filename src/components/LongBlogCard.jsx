@@ -24,7 +24,7 @@ const LongBlogCard = ({ blog }) => {
       console.log("delete clicked");
       try {
         const response = await axios.delete(
-          `http://127.0.0.1:8787/api/v1/blog/${blog?.id}`,
+          `https://backend.sevenburgers.workers.dev/api/v1/blog/${blog?.id}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,

@@ -26,47 +26,44 @@ const Blog = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-      const fetchBlog = async () => {
-        try {
-          const response = await axios.get(
-            `http://127.0.0.1:8787/api/v1/blog/${id}`,
-            {
-              headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`,
-              },
-            }
-          );
-          const { blog } = response.data;
-          setText1(blog.title);
-          setText2(blog.content[0]);
-          setText3(blog.content[1]);
-          setText4(blog.content[2]);
+    const fetchBlog = async () => {
+      try {
+        const response = await axios.get(
+          `https://backend.sevenburgers.workers.dev/api/v1/blog/${id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
+        const { blog } = response.data;
+        setText1(blog.title);
+        setText2(blog.content[0]);
+        setText3(blog.content[1]);
+        setText4(blog.content[2]);
 
-          blog.images.forEach((image) => {
-            if (image.includes("image1")) {
-              setImage1(image);
-            } else if (image.includes("image2")) {
-              setImage2(image);
-            } else if (image.includes("image3")) {
-              setImage3(image);
-            } else if (image.includes("image4")) {
-              setImage4(image);
-            }
-          });
+        blog.images.forEach((image) => {
+          if (image.includes("image1")) {
+            setImage1(image);
+          } else if (image.includes("image2")) {
+            setImage2(image);
+          } else if (image.includes("image3")) {
+            setImage3(image);
+          } else if (image.includes("image4")) {
+            setImage4(image);
+          }
+        });
 
-          const date = new Date(blog?.createdAt);
-          const options = { year: "numeric", month: "long", day: "numeric" };
-          const formattedDatee = date.toLocaleDateString("en-US", options);
-          setFormattedDate(formattedDatee);
-        } catch (error) {
-          console.error("Error fetching blogs:", error);
-        }
-      };
-      fetchBlog();
-    
+        const date = new Date(blog?.createdAt);
+        const options = { year: "numeric", month: "long", day: "numeric" };
+        const formattedDatee = date.toLocaleDateString("en-US", options);
+        setFormattedDate(formattedDatee);
+      } catch (error) {
+        console.error("Error fetching blogs:", error);
+      }
+    };
+    fetchBlog();
   }, [id]);
-
-
 
   return (
     <div className="bg-[#F4EBDC]">
@@ -115,21 +112,18 @@ const Blog = () => {
             )}
           </div>
         </div>
-        
+
         <div className="relative">
           <div className="md:flex lg:flex hidden flex-col gap-1   sticky w-[22px] mt-10 left-[20%] top-[200px]">
-          <a href="#">
-
-            <img src="/twitter.svg" className="w-[21px] h-[21px]" />
-          </a>
-          <a href="#">
-
-            <img src="/InstagramLogo.svg" className="w-[21px] h-[21px]" />
-          </a>
-          <a href="#">
-
-            <img src="/facee.svg" className="w-[21px] h-[21px]" />
-          </a>
+            <a href="#">
+              <img src="/twitter.svg" className="w-[21px] h-[21px]" />
+            </a>
+            <a href="#">
+              <img src="/InstagramLogo.svg" className="w-[21px] h-[21px]" />
+            </a>
+            <a href="#">
+              <img src="/facee.svg" className="w-[21px] h-[21px]" />
+            </a>
           </div>
 
           <div className="w-[50%] mx-auto md:mt-[-100px] lg:mt-[-100px] ">
@@ -167,14 +161,15 @@ const Blog = () => {
           <div className="bg-[#A1A1A1] h-[1px] w-[80%] mt-28"></div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
             {data?.blogs?.map((blog) => (
-              <div  key={blog.id}>
-              <div onClick={() => {
-                navigate(`/blogs/${blog.id}`);
-                window.location.reload()
-              }}>
-
-                <BlogCard blog={blog} />
-              </div>
+              <div key={blog.id}>
+                <div
+                  onClick={() => {
+                    navigate(`/blogs/${blog.id}`);
+                    window.location.reload();
+                  }}
+                >
+                  <BlogCard blog={blog} />
+                </div>
               </div>
             ))}
           </div>
