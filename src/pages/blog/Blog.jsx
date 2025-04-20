@@ -1,8 +1,8 @@
 import { useParams } from "react-router";
-import React, { useEffect, useState, useTransition } from "react";
+import  { useEffect, useState } from "react";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import BlogCard from "../../components/BLogCard";
 import { useRecoilValue } from "recoil";
@@ -21,7 +21,6 @@ const Blog = () => {
   const { id } = useParams();
   const [formattedDate, setFormattedDate] = useState();
   const data = useRecoilValue(allBlogs);
-  const [isPending, startTransition] = useTransition();
 
   const navigate = useNavigate();
 
@@ -42,17 +41,13 @@ const Blog = () => {
         setText3(blog.content[1]);
         setText4(blog.content[2]);
 
-        blog.images.forEach((image) => {
-          if (image.includes("image1")) {
-            setImage1(image);
-          } else if (image.includes("image2")) {
-            setImage2(image);
-          } else if (image.includes("image3")) {
-            setImage3(image);
-          } else if (image.includes("image4")) {
-            setImage4(image);
-          }
-        });
+        console.log(blog.images);
+        setImage1(blog.images[0]);
+        setImage2(blog.images[1]);
+        
+        setImage3(blog.images[2]);
+        setImage4(blog.images[3]);
+        
 
         const date = new Date(blog?.createdAt);
         const options = { year: "numeric", month: "long", day: "numeric" };

@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { RxHamburgerMenu, RxCross2 } from "react-icons/rx";
-import { animateScroll as scroll } from "react-scroll";
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
@@ -10,11 +9,6 @@ const Navbar = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   // console.log(windowWidth)
 
-  const variants = {
-    hidden: { opacity: 0, y: -20 },
-    visible: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: -20 },
-  };
       useEffect(() => {
         const handleScroll = () => {
             setScrolling(window.scrollY > 20);
@@ -70,10 +64,6 @@ const Navbar = () => {
      },
   };
 
-  const imgVariants = {
-    hidden: { opacity: 1, x: 1000 },
-    visible: { opacity: 1, x: 0 },
-  };
 
   return (
     <div className="bg-bg-yellow md:absolute md:z-50 lg:absolute lg:z-50 ">
@@ -122,6 +112,9 @@ const Navbar = () => {
             </motion.div>
             <motion.div variants={linkVariants}>
               <Link className="flex gap-3" to="/blogs"><img src="/navbar/blog.svg"/>Blog</Link>
+            </motion.div>
+            <motion.div variants={linkVariants}>
+              <Link className="flex gap-3" to="/login"><img src="/navbar/hedset.svg"/>Login to CRUD Blogs</Link>
             </motion.div>
             <motion.div variants={linkVariants}>
               <Link className="flex gap-3" to="/faq"><img src="/navbar/faq.svg"/>Faqs</Link>
@@ -204,6 +197,7 @@ const Navbar = () => {
               <Link to="/faq">Faqs</Link>
               <Link to="/story">Our Story</Link>
               <Link to="/contact">Contact us</Link>
+             
             </motion.div>
           </div>
         </motion.div>

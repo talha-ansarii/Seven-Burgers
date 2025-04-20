@@ -1,5 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./components/Hero";
+import {  Route, Routes } from "react-router-dom";
 import "./App.css";
 import HomePage from "./pages/HomePage";
 import Contact from "./pages/Contact";
@@ -32,7 +31,7 @@ function App() {
         <Route path="/blogs/writeblog" element={<WriteBlog />} />
         <Route path="/blogs/:id" element={<Blog />} />
         <Route path="/blogs/editblog/:id" element={<EditBlog />} />
-      </Routes>
+      </Routes> 
     </Suspense>
     </div>
   );
